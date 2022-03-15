@@ -1,0 +1,190 @@
+
+/* IMPORTANTO FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  color: #272262;
+  border: none;
+}
+
+body {
+  background-color: #323232;
+}
+
+/* CONTAINER-LOGIN */
+#login-container {
+  display: flex;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 30px;
+  margin-top: 10vh;
+}
+
+/* STYLES CARD  */
+.card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4%;
+}
+
+/* NAME LOGIN */
+h1{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+form {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.label-float input{
+  width: 100%;
+  padding: 5px 5px;
+  display: inline-block;
+  border: 0;
+  border-bottom: 2px solid #272262;
+  background-color: transparent;
+  outline: none;
+  min-width: 180px;
+  font-size: 16px;
+  transition: all .3s ease-out;
+  border-radius: 0;
+}
+
+.label-float{
+  position: relative;
+  padding-top: 13px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.label-float input:focus{
+  border-bottom: 2px solid #4038a0;
+}
+
+.label-float label{
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 13px;
+  transition: all .3s ease-out;
+}
+
+.label-float input:focus + label,
+.label-float input:valid + label{
+  font-size: 13px;
+  margin-top: 0;
+  color: #4038a0
+}
+
+.fa-eye{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+  color: #272262;
+}
+
+#forgot-pass {
+  text-align: right;
+  display: block;
+  color: #323232;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .3s ease-out;
+  font-size: .9rem;
+}
+
+#forgot-pass:hover {
+  color: #4038a0;
+}
+
+.button-login{
+  display: flex;
+  justify-content: center;
+  padding: 5px 40px;
+}
+
+.button-login button{
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  margin-top: 15px;
+  color: #FFF;
+  background-color: #08558b;
+  cursor: pointer;
+  outline: none;
+  transition: all .4s ease-out;
+}
+
+button:hover{
+  background-color: #1b2230;
+  transition: .7s;
+}
+
+/* INICIO DA DIV REDES SOCIAIS */
+#social-container, #social-container p {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#social-container i {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  color: #fff;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+#social-container i:hover {
+  background-color: #1b2230;
+  transition: .5s;
+}
+
+.fa-facebook-f {
+  background-color: #3b5998;
+}
+
+.fa-linkedin {
+  background-color: #0077b5;
+}
+/* FINAL DA DIV REDES SOCIAIS */
+
+.divider {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 1.5px;
+  background: #32323260;
+}
+
+p{
+  font-size: .9rem;
+  text-align: center;
+
+}
+
+#register{
+  color: #323232;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .3s ease-out;
+  font-size: .9rem;
+}
+
+#register:hover{
+  color: #4038a0;
+}

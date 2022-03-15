@@ -1,0 +1,35 @@
+<?php 
+
+include "../config/conexao.php";
+
+$cpf = $_POST['cpf'];
+$senha = $_POST['senha'];
+
+$sql = 
+	"SELECT 
+		u.* 
+	FROM 
+		usuario u 
+	WHERE 
+		u.cpf_usuario = '$cpf' 
+		AND u.senha_usuario = '$senha'";
+
+$resultado = mysqli_query($conexao, $sql);
+$quantidade= mysqli_num_rows($resultado);
+
+if ($quantidade > 0) {
+	session_start();
+
+	$_SESSION['cpf'] = $cpf;
+
+	header('Location:dashboard.php');
+
+} else{
+	header('Location:tela_login.php');
+	
+}
+
+
+/*echo "$quantidade";*/
+
+ ?>
