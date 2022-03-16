@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <!-- bootstrap 4 -->
     <link rel="stylesheet" href="assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+
     <title>Dashboard</title>
 </head>
 <body>
@@ -14,41 +17,61 @@
             <div class="row">
                 <div class="col-3 bg-dark">
                     <div id="container-logo">
-                        <img src="assets/img/logo.jpg" width="100%" alt="logo">
+                        <a id="dashboard" href="#"><img id="logo-img" src="assets/img/logo.png" alt="logo">Dashboard</a>
                         
                     </div>
 
                     <div id="container-menu">
                       <ul>
-                          <li><a href="#">Inicio</a></li>
-                          <li><a href="#">Cadastro</a></li>
-                          <li><a href="#">Visitas</a></li>
-                          <li><a href="#">Relatório</a></li>
+                          <li><a href="#" class="btn">Inicio</a></li>
+                          <li><a href="#" class="btn">Cadastro</a></li>
+                          <li><a href="#" class="btn">Visitas</a></li>
+                          <li><a href="#" class="btn">Relatório</a></li>
                       </ul>
                     </div>
                 </div>
 
-                <div class="col-9 bg-danger">
+                <div class="col-9">
                     <div>
-                        <form action=""></form>                        
+                        <form action="">
+                            formulário
+                        </form>                        
                     </div>
                     <div>
-                        <table class="table">
-                            <thead>
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
                                 <tr>
-                                    <th>nome</th>
-                                    <th>data</th>
-                                    <th>colegio</th>
-                                    <th colspan="2">Ações</th>
+                                    <th>#</th>
+                                    <th>Nome</th>
+                                    <th>Data de Visita</th>
+                                    <th>Colégio/Universidade</th>
+                                    <th colspan="2" style="text-align: center;">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Jião</td>
-                                    <td>17/03/2022</td>
+                                    <td>1</td>
+                                    <td>João Marcos</td>
+                                    <td>15/03/2022</td>
                                     <td>Diocesano</td>
-                                    <td>delete</td>
-                                    <td>editar</td>
+                                    <td><button class="btn btn-primary">Alterar</button></td>
+                                    <td><button class="btn btn-danger">Deletar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>José Mateus</td>
+                                    <td>22/02/2022</td>
+                                    <td>Alternativo</td>
+                                    <td><button class="btn btn-primary">Alterar</button></td>
+                                    <td><button class="btn btn-danger">Deletar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Alice Maria</td>
+                                    <td>03/01/2022</td>
+                                    <td>Uninassau</td>
+                                    <td><button class="btn btn-primary">Alterar</button></td>
+                                    <td><button class="btn btn-danger">Deletar</button></td>
                                 </tr>
                             </tbody>
                         </table>
