@@ -21,7 +21,7 @@
 		<div id="login-container"> <!-- inicio div login-container -->
 			<div class='card'> <!-- inicio div card -->
     		<h1>Login</h1>
-				<form action="./app/controller/verificar_login.php" method="POST">	
+				<form action="./app/controllers/verificar_login.php" method="POST">	
 					<div class='label-float'>
 						<input name='cpf' type='text' id='userCPF' placeholder='' required>
 						<label id='userLabel' for='userCPF'>CPF</label>
