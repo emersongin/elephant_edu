@@ -22,7 +22,7 @@ if ($quantidade > 0) {
 
 	$_SESSION['cpf'] = $cpf;
 
-	header('Location:dashboard.php');
+	header('Location:dashboard.html');
 
 } else{
 	header('Location:tela_login.php');
