@@ -6,6 +6,6 @@ if (isset($_SESSION['cpf'])) {
 	header('Location:dashboard.html');
 
 } else {
-	header('Location:tela_login.php');
+	header('Location:login.php');
 
 }

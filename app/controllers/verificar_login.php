@@ -25,7 +25,7 @@ if ($quantidade > 0) {
 	header('Location:dashboard.html');
 
 } else{
-	header('Location:tela_login.php');
+	header('Location:login.php');
 	
 }
 
