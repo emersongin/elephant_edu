@@ -1,5 +1,5 @@
 --
--- Extraindo dados da tabela `usuario`
+-- inserindo dados na tabela `usuario`
 --
 
 INSERT INTO 

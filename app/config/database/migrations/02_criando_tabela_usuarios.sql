@@ -23,12 +23,12 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `usuarios`
 --
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `cpf` varchar(30) NOT NULL,
-  `senha` varchar(50) NOT NULL,
-  `telefone` varchar(30) NOT NULL,
-  `tipo` varchar(50) NOT NULL
+    `id` int(11) NOT NULL,
+    `nome` varchar(50) NOT NULL,
+    `cpf` varchar(30) NOT NULL,
+    `senha` varchar(50) NOT NULL,
+    `telefone` varchar(30) NOT NULL,
+    `tipo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Índices para tabela `usuario`
@@ -41,3 +41,6 @@ ALTER TABLE `usuarios` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREME
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- excluir tabela usuarios!
+-- DROP TABLE usuarios;
