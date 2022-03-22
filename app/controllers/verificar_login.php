@@ -1,6 +1,6 @@
 <?php 
 
-include "../config/conexao.php";
+include "../config/database/conexao.php";
 
 $cpf = $_POST['cpf'];
 $senha = $_POST['senha'];
