@@ -22,14 +22,17 @@
   color: #fff;
   cursor: pointer;
   text-decoration: none;
-
-  
 }
 
 .container #logo-img{
   margin-top: 10px;
   width: 75px;
   height: 75px;
+}
+
+#container-logo p{
+  margin-top: 20px;
+  color: #fff;
 }
 
 li {
