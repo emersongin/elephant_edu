@@ -42,7 +42,7 @@
 							<a href="#" id="forgot-pass">Esqueceu a senha?</a>
 
 							<div class="button-login">
-								<button onclick="entrar()">Login</button>
+								<button onclick="">Login</button>
 							</div>
 						</form>
 

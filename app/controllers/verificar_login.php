@@ -9,10 +9,10 @@ $sql =
 	"SELECT 
 		u.* 
 	FROM 
-		usuario u 
+		usuarios u 
 	WHERE 
-		u.cpf_usuario = '$cpf' 
-		AND u.senha_usuario = '$senha'";
+		u.nome = '$cpf' 
+		AND u.senha = '$senha'";
 
 $resultado = mysqli_query($conexao, $sql);
 $quantidade= mysqli_num_rows($resultado);
@@ -32,4 +32,3 @@ if ($quantidade > 0) {
 
 /*echo "$quantidade";*/
 
- ?>
