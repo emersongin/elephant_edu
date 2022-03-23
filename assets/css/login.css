@@ -30,7 +30,8 @@ body {
 .card {
   background-color: #fff;
   padding: 30px;
-  border-radius: 4%;
+  margin: 10px;
+  border-radius: 4px;
 }
 
 /* NAME LOGIN */
@@ -110,7 +111,6 @@ form {
 .button-login{
   display: flex;
   justify-content: center;
-  padding: 5px 40px;
 }
 
 .button-login button{
@@ -119,8 +119,8 @@ form {
   font-weight: bold;
   border: none;
   height: 40px;
-  width: 100px;
-  border-radius: 20px;
+  width: 100%;
+  border-radius: 4px;
   margin-top: 15px;
   color: #FFF;
   background-color: #08558b;
@@ -130,8 +130,8 @@ form {
 }
 
 button:hover{
-  background-color: #1b2230;
-  transition: .7s;
+  background-color: #1c79bb;
+  transition: .5s;
 }
 
 /* INICIO DA DIV REDES SOCIAIS */
@@ -187,4 +187,19 @@ p{
 
 #register:hover{
   color: #4038a0;
+}
+
+.container #logo-img{
+  margin-top: 10px;
+  width: 75px;
+  height: 75px;
+}
+
+#container-logo p{
+  margin-top: 20px;
+  color: #fff;
+}
+
+body {
+  background-image: url("../img/background-main.jpg");
 }

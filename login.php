@@ -17,9 +17,14 @@
 	</head>
 
 	<body>
-		<main class="container">
-				<div class="d-flex justify-content-center align-items-center h-full">
-					<div class="card">
+		<main class="container" style="height: 100vh;">
+				<div class="d-flex justify-content-center align-items-center h-100">
+					<div class="card" style="height: 440px;">
+						<div id="container-logo" class="d-flex justify-content-center">
+							<div>
+								<img id="logo-img" src="assets/img/logo.png" alt="logo">
+							</div>
+                        </div>
 						<h1>Login</h1>
 						<form action="./app/controllers/verificar_login.php" method="POST">	
 							<div class="label-float">
