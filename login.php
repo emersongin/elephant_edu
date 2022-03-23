@@ -17,47 +17,33 @@
 	</head>
 
 	<body>
-
-		<div id="login-container"> <!-- inicio div login-container -->
-			<div class='card'> <!-- inicio div card -->
-    		<h1>Login</h1>
-				<form action="./app/controllers/verificar_login.php" method="POST">	
-					<div class='label-float'>
-						<input name='cpf' type='text' id='userCPF' placeholder='' required>
-						<label id='userLabel' for='userCPF'>CPF</label>
-					</div>
-			
-					<div class='label-float'>
-						<input name='senha' type='password' id='senha' placeholder='' required>
-						<label id='senhaLabel' for='senha'>Senha</label>
-						<i class="fa fa-eye" aria-hidden="true"></i>
-					</div>
+		<main class="container">
+				<div class="d-flex justify-content-center align-items-center h-full">
+					<div class="card">
+						<h1>Login</h1>
+						<form action="./app/controllers/verificar_login.php" method="POST">	
+							<div class="label-float">
+								<input name="cpf" type="text" id="userCPF" placeholder="" required>
+								<label id="userLabel" for="userCPF">CPF</label>
+							</div>
 					
-					<a href="#" id="forgot-pass">Esqueceu a senha?</a>
+							<div class="label-float">
+								<input name="senha" type="password" id="senha" placeholder="" required>
+								<label id="senhaLabel" for="senha">Senha</label>
+								<i class="fa fa-eye" aria-hidden="true"></i>
+							</div>
+							
+							<a href="#" id="forgot-pass">Esqueceu a senha?</a>
 
-					<div class='button-login'>
-						<button onclick='entrar()'>Login</button>
-					</div>
-				</form>
+							<div class="button-login">
+								<button onclick="entrar()">Login</button>
+							</div>
+						</form>
 
-				<div class='divider'></div> <!-- linha que substitui o HR -->
-
-				<!-- div relacionado ao login pelas redes sociais -->
-				<div id="social-container">
-					<p>Ou entre pelas suas redes sociais</p>
-					<i class="fa fa-facebook-f"></i>
-					<i class="fa fa-linkedin"></i>
-					
+					</div> 
 				</div>
+		</main>
 
-				<div class='divider'></div> <!-- linha que substitui o HR -->
-    
-				<p> Não tem uma conta?
-					<a href='#' id="register"> Cadastre-se</a>
-				</p>
-    
-  		</div> <!-- final div card -->
-		</div> <!-- final div login-container -->
 
 
 	<!-- importanto script js -->
