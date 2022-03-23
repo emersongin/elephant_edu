@@ -8,7 +8,7 @@
 
 		unset($_SESSION['erro_login']);
 
-		var_dump($_SESSION);
+		// var_dump($_SESSION);
 	
 	?>
 

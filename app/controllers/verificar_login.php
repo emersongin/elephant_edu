@@ -18,7 +18,7 @@ $resultado = mysqli_query($conexao, $sql);
 $quantidade= mysqli_num_rows($resultado);
 
 session_start();
-$_SESSION['method'] = $_SERVER['REQUEST_METHOD'];
+// $_SESSION['method'] = $_SERVER['REQUEST_METHOD'];
 
 if ($quantidade > 0) {
 	$_SESSION['cpf'] = $cpf;
