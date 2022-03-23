@@ -23,6 +23,7 @@
 						<div id="container-logo" class="d-flex justify-content-center">
 							<div>
 								<img id="logo-img" src="assets/img/logo.png" alt="logo">
+								Elephant EDU
 							</div>
                         </div>
 						<h1>Login</h1>
