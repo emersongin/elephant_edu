@@ -19,14 +19,14 @@
 	<body>
 		<main class="container" style="height: 100vh;">
 				<div class="d-flex justify-content-center align-items-center h-100">
-					<div class="card" style="height: 440px;">
+					<div class="card" style="height: 500px;">
 						<div id="container-logo" class="d-flex justify-content-center">
-							<div>
+							<div class="text-center">
 								<img id="logo-img" src="assets/img/logo.png" alt="logo">
-								Elephant EDU
+								<h1 class="font-weight-bold">Elephant EDU</h1>
 							</div>
                         </div>
-						<h1>Login</h1>
+						<h2>Login</h2>
 						<form action="./app/controllers/verificar_login.php" method="POST">	
 							<div class="label-float">
 								<input name="cpf" type="text" id="userCPF" placeholder="" required>
