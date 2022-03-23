@@ -16,11 +16,3 @@ INSERT INTO
     'coordenador'
 );
 
--- exemplo de JOIN com tabela usuarios
-
-SELECT
-	u.*,
-    p.*
-FROM
-	usuarios u
-JOIN perfis p ON p.id = u.id_perfil

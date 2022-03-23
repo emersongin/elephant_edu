@@ -10,7 +10,7 @@ INSERT INTO
     `cpf`, 
     `senha`, 
     `telefone`, 
-    `tipo`
+    `id_perfil`
 ) VALUES (
     1, 
     'admin', 
