@@ -5,6 +5,8 @@ include "../config/database/conexao.php";
 $cpf = $_POST['cpf'];
 $senha = $_POST['senha'];
 
+$server = 'http://localhost/projeto5periodo-main_login_ok/';
+
 $sql = 
 	"SELECT 
 		u.* 
@@ -23,12 +25,12 @@ session_start();
 if ($quantidade > 0) {
 	$_SESSION['cpf'] = $cpf;
 
-	header('Location:../../dashboard.html');
+	header("Location:{$server}dashboard.html");
 
 } else{
 	$_SESSION['erro_login'] = true;
 
-	header('Location:../../login.php');
+	header("Location:{$server}login.php");
 	
 }
 

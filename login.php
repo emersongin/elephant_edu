@@ -9,6 +9,7 @@
 		unset($_SESSION['erro_login']);
 
 		// var_dump($_SESSION);
+		// var_dump($_SERVER);
 	
 	?>
 
@@ -49,8 +50,6 @@
 								<label id="senhaLabel" for="senha">Senha</label>
 								<i class="fa fa-eye" aria-hidden="true"></i>
 							</div>
-							
-							<a href="#" id="forgot-pass">Esqueceu a senha?</a>
 
 							<?= $erro_login ? '<div class="text-danger">usuário ou senha incorreto!</div>' : '' ?>
 
