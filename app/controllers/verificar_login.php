@@ -17,15 +17,18 @@ $sql =
 $resultado = mysqli_query($conexao, $sql);
 $quantidade= mysqli_num_rows($resultado);
 
-if ($quantidade > 0) {
-	session_start();
+session_start();
+$_SESSION['method'] = $_SERVER['REQUEST_METHOD'];
 
+if ($quantidade > 0) {
 	$_SESSION['cpf'] = $cpf;
 
-	header('Location:dashboard.html');
+	header('Location:../../dashboard.html');
 
 } else{
-	header('Location:login.php');
+	$_SESSION['erro_login'] = true;
+
+	header('Location:../../login.php');
 	
 }
 

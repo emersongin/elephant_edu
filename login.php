@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+	<?php 
+		session_start(); 
+
+		$erro_login = isset($_SESSION['erro_login']) ? $_SESSION['erro_login'] : false;
+
+		unset($_SESSION['erro_login']);
+
+		var_dump($_SESSION);
+	
+	?>
+
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +41,7 @@
 						<form action="./app/controllers/verificar_login.php" method="POST">	
 							<div class="label-float">
 								<input name="cpf" type="text" id="userCPF" placeholder="" required>
-								<label id="userLabel" for="userCPF">CPF</label>
+								<label id="userLabel" for="userCPF">usuário</label>
 							</div>
 					
 							<div class="label-float">
@@ -40,6 +51,8 @@
 							</div>
 							
 							<a href="#" id="forgot-pass">Esqueceu a senha?</a>
+
+							<?= $erro_login ? '<div class="text-danger">usuário ou senha incorreto!</div>' : '' ?>
 
 							<div class="button-login">
 								<button onclick="">Login</button>
