@@ -2,38 +2,48 @@
 
 include "../config/database/conexao.php";
 
-$cpf = $_POST['cpf'];
-$senha = $_POST['senha'];
+try {
 
-$server = 'http://localhost/projeto5periodo-main_login_ok/';
+	$conexao->beginTransaction();
 
-$sql = 
-	"SELECT 
-		u.* 
-	FROM 
-		usuarios u 
-	WHERE 
-		u.nome = '$cpf' 
-		AND u.senha = '$senha'";
+	$sql = 
+		"SELECT
+			u.*
+		FROM
+			usuarios u
+		WHERE
+			u.nome = :nome
+			AND u.senha = :senha";
 
-$resultado = mysqli_query($conexao, $sql);
-$quantidade= mysqli_num_rows($resultado);
+	$parametros = Array(
+		'nome' => $_POST['nome'],
+		'senha' => $_POST['senha']
+	);
 
-session_start();
-// $_SESSION['method'] = $_SERVER['REQUEST_METHOD'];
+	$consulta = $conexao->prepare($sql);
+	$consulta->execute($parametros);
 
-if ($quantidade > 0) {
-	$_SESSION['cpf'] = $cpf;
+	$usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
-	header("Location:{$server}dashboard.html");
+	$conexao->commit();
 
-} else{
-	$_SESSION['erro_login'] = true;
-
-	header("Location:{$server}login.php");
+	session_start();
 	
+	if ($usuario) {
+		$_SESSION['id'] = $usuario['id'];
+	
+		header("Location:{$server}dashboard.php");
+	
+	} else{
+		$_SESSION['erro_login'] = true;
+	
+		header("Location:{$server}login.php");
+		
+	}
+
+} catch(PDOException $e) {
+	$conexao->rollback();
+
+	echo $e;
+
 }
-
-
-/*echo "$quantidade";*/
-

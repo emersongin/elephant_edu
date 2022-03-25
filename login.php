@@ -8,7 +8,7 @@
 
 		unset($_SESSION['erro_login']);
 
-		// var_dump($_SESSION);
+		var_dump($_SESSION);
 		// var_dump($_SERVER);
 	
 	?>
@@ -41,8 +41,8 @@
 						<h2>Login</h2>
 						<form action="./app/controllers/verificar_login.php" method="POST">	
 							<div class="label-float">
-								<input name="cpf" type="text" id="userCPF" placeholder="" required>
-								<label id="userLabel" for="userCPF">usuário</label>
+								<input name="nome" type="text" id="nomeUsuario" placeholder="" required>
+								<label id="userLabel" for="nomeUsuario">usuário</label>
 							</div>
 					
 							<div class="label-float">

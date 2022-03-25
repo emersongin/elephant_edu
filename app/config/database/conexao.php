@@ -1,16 +1,17 @@
 <?php 
 
-$host = "localhost"; // maquina ou host
-$user = "root"; // user
+$servername = "localhost";
+$username = "root";
 $password = "";
 $database = "login_top";
 
-$conexao = mysqli_connect($host, $user, $password, $database);
+try {
+    $conexao = new PDO("mysql:host={$servername};dbname={$database}", $username, $password);
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-mysqli_set_charset($conexao,'utf8');
+    $server = "{$_SERVER['HTTP_ORIGIN']}/projeto5periodo-main_login_ok/";
 
-if ($conexao == false) {
-    http_response_code(500);
-    
-    echo "Erro de conexão não conhecida!";
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+
 }
