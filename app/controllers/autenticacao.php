@@ -38,7 +38,7 @@ try {
 		$_SESSION['erro_login'] = true;
 	
 		header("Location:{$server}/login.php");
-		
+
 	}
 
 } catch(PDOException $e) {
