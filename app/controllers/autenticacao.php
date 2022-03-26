@@ -32,18 +32,17 @@ try {
 	if ($usuario) {
 		$_SESSION['id'] = $usuario['id'];
 	
-		header("Location:{$server}dashboard.php");
+		header("Location:{$server}/dashboard.php");
 	
 	} else{
 		$_SESSION['erro_login'] = true;
 	
-		header("Location:{$server}login.php");
+		header("Location:{$server}/login.php");
 		
 	}
 
 } catch(PDOException $e) {
 	$conexao->rollback();
-
 	echo $e;
 
 }

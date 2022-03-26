@@ -8,8 +8,7 @@
 
 		unset($_SESSION['erro_login']);
 
-		var_dump($_SESSION);
-		// var_dump($_SERVER);
+		// var_dump($_SESSION);
 	
 	?>
 
@@ -39,7 +38,7 @@
 							</div>
                         </div>
 						<h2>Login</h2>
-						<form action="./app/controllers/verificar_login.php" method="POST">	
+						<form action="./app/controllers/autenticacao.php" method="POST">	
 							<div class="label-float">
 								<input name="nome" type="text" id="nomeUsuario" placeholder="" required>
 								<label id="userLabel" for="nomeUsuario">usuário</label>
