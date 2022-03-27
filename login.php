@@ -41,7 +41,7 @@
                         </div>
 						<h2>Login</h2>
 						
-						<form action="./app/controllers/autenticacao.php" method="POST">	
+						<form action="./app/controllers/autenticacoes.php" method="POST">	
 							<div class="label-float">
 								<input name="nome" type="text" id="nomeUsuario" placeholder="" required>
 								<label id="userLabel" for="nomeUsuario">usuário</label>

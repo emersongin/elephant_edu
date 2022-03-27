@@ -1,2 +1,2 @@
 <?php 
-	include_once "./app/controllers/sessao.php";
+	include_once "./app/controllers/sessoes.php";
