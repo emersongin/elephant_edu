@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "login_top";
+$database = "elephant_edu";
 
 try {
     $conexao = new PDO("mysql:host={$servername};dbname={$database}", $username, $password);
