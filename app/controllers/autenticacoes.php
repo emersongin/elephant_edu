@@ -1,7 +1,5 @@
 <?php 
 
-include "../config/database/conexao.php";
-
 try {
 
 	$conexao->beginTransaction();
