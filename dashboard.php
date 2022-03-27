@@ -5,31 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/logoFavicon.png">
+
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <!-- bootstrap 4 -->
     <link rel="stylesheet" href="assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
 
-    <title>Dashboard</title>
+    <title>Elephant EDU :: Dashboard</title>
 </head>
 <body>
     <main>
-        <div class="container">
+        <div class="container" style="margin: 0 200px; padding: 0;">
             <div class="row">
-                <div class="col-3 bg-dark">
+                <div class="col-3 card" style="background-color: #153575; height: 100vh;">
                     <a id="dashboard" href="#">
-                        <div id="container-logo" class="d-flex justify-content-center" style="height: 10vh;">
-                            <img id="img-fluid" src="assets/img/logo.png" alt="logo">
-                            <p>Dashboard</p>
+                        <div id="container-logo" class="d-flex justify-content-center" style="height: 7vh; margin-top: 1.25rem">
+                            <img id="img-fluid" src="assets/img/logoDashboard.svg" alt="logo">
                         </div>
                     </a>
 
-                    <div id="container-menu">
-                      <ul>
-                          <li><a href="#" class="btn">Inicio</a></li>
-                          <li><a href="#" class="btn">Cadastro</a></li>
-                          <li><a href="#" class="btn">Visitas</a></li>
-                          <li><a href="#" class="btn">Relatório</a></li>
-                      </ul>
+                    <hr> <!-- Falta estilizar o hr --->
+
+                    <div id="container-menu" style="margin-top: 50px">
+                        <ul>
+                            <li><a href="#" class="btn">Inicio</a></li>
+                            <li><a href="#" class="btn">Cadastro</a></li>
+                            <li><a href="#" class="btn">Visitas</a></li>
+                            <li><a href="#" class="btn">Relatório</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card" style="background-color: #7F9ECD;"id="">
+                        <h3 style="color: #FFF">Cargo:</h3>
+                        <img src="assets/img/avatar_man_boy.png" style="width: 50px; height: 50px;" alt="">
+                        <h4 style="color: #FFF">Nome Sobrenome</h4>
+
+                        <button type="" class="">SAIR</button>
+                        <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
                     </div>
                 </div>
 

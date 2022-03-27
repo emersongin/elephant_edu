@@ -17,6 +17,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/img/logoFavicon.png">
+
 		<script src="https://kit.fontawesome.com/070f1d5364.js" crossorigin="anonymous"></script>
 		<!-- para uso dos icones pelo bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -30,14 +32,15 @@
 	<body>
 		<main class="container" style="height: 100vh;">
 				<div class="d-flex justify-content-center align-items-center h-100">
-					<div class="card" style="height: 500px;">
+					<div class="card" style="height: 500px; border: 3px solid #7F9ECD; border-radius: 30px">
 						<div id="container-logo" class="d-flex justify-content-center">
 							<div class="text-center">
-								<img id="logo-img" src="assets/img/logo.png" alt="logo">
+								<img id="logo-img" src="assets/img/elephantLogo.png" alt="logo">
 								<h1 class="font-weight-bold">Elephant EDU</h1>
 							</div>
                         </div>
 						<h2>Login</h2>
+						
 						<form action="./app/controllers/autenticacao.php" method="POST">	
 							<div class="label-float">
 								<input name="nome" type="text" id="nomeUsuario" placeholder="" required>
@@ -60,8 +63,6 @@
 					</div> 
 				</div>
 		</main>
-
-
 
 	<!-- importanto script js -->
 	<script src="assets/js/viewPassword.js"></script>
