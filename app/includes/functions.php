@@ -1,7 +1,5 @@
 <?php
 
-include_once './methodes.php';
-
 function parseId($dado) {
     return intval($dado) > 0 ? intval($dado) : false;
 }

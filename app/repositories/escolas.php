@@ -123,7 +123,7 @@ function escolaAtualizar($params) {
             "UPDATE 
                 escolas
             SET
-                nome = :nome
+                nome = :nome,
                 id_responsavel = :id_responsavel, 
                 id_localidade = :id_localidade
             WHERE
@@ -139,6 +139,30 @@ function escolaAtualizar($params) {
     } catch(PDOException $erro) {
         $conexao->rollback();
         
+        return falha($erro, 500);
+    }
+}
+
+function escolaApagar($params) {
+    try {
+        global $conexao;
+
+        $conexao->beginTransaction();
+
+        $sql = "DELETE FROM escolas WHERE id = :id";
+
+        $consulta = $conexao->prepare($sql);
+        $consulta->execute($params);
+    
+        $escolas = $consulta->fetchAll(PDO::FETCH_ASSOC);
+    
+        $conexao->commit();
+
+        return sucesso(true, 204);
+    
+    } catch(PDOException $erro) {
+        $conexao->rollback();
+
         return falha($erro, 500);
     }
 }
