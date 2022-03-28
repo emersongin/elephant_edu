@@ -1,46 +1,39 @@
 <?php 
 
-try {
+include_once '../includes/methodes.php';
+include_once '../includes/functions.php';
+include_once '../repositories/autenticacoes.php';
 
-	$conexao->beginTransaction();
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	$sql = 
-		"SELECT
-			u.*
-		FROM
-			usuarios u
-		WHERE
-			u.nome = :nome
-			AND u.senha = :senha";
+    $nome = isset($_POST['nome']) ? parseTexto($_POST['nome']) : false;
+	$senha = isset($_POST['senha']) ? parseTexto($_POST['senha']) : false;
 
-	$parametros = Array(
-		'nome' => $_POST['nome'],
-		'senha' => $_POST['senha']
-	);
+    $valido = $nome && $senha;
+    $params = array(
+        'nome'  => $nome,
+        'senha' => $senha
+    );
 
-	$consulta = $conexao->prepare($sql);
-	$consulta->execute($parametros);
-
-	$usuario = $consulta->fetch(PDO::FETCH_ASSOC);
-
-	$conexao->commit();
+    $valido ? $usuario = autenticacaoUsuario($params) : falha('parametros inválido!');
 
 	session_start();
-	
+		
 	if ($usuario) {
 		$_SESSION['id'] = $usuario['id'];
-	
-		header("Location:{$server}/dashboard.php");
-	
+
+		header("Location:../../dashboard.php");
+
 	} else{
 		$_SESSION['erro_login'] = true;
-	
-		header("Location:{$server}/login.php");
+
+		header("Location:../../login.php");
 
 	}
 
-} catch(PDOException $e) {
-	$conexao->rollback();
-	echo $e;
-
+    exit;
 }
+
+
+echo falha("metodo {$_SERVER['REQUEST_METHOD']} não disponível.");
+exit;

@@ -70,5 +70,5 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     exit;
 }
 
-echo falha("metodo {$_SERVER['REQUEST_METHOD']} não disponóvel.");
+echo falha("metodo {$_SERVER['REQUEST_METHOD']} não disponível.");
 exit;
