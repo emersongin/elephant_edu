@@ -12,10 +12,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
             'id' => $id
         );
 
-        echo $id ? escolaID($params) : falha();
+        echo $id ? escolasID($params) : falha();
         
     } else {
-        echo escolaTodas();
+        echo escolasTodas();
 
     }
 
@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'id_localidade'  => $id_localidade
     );
 
-    echo $valido ? escolaInserir($params) : falha('parametros inválido!');
+    echo $valido ? escolasInserir($params) : falha('parametros inválido!');
     exit;
 }
 
@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT') {
         'id_localidade'  => $id_localidade
     );
 
-    echo $valido ? escolaAtualizar($params) : falha('parametros inválido!');
+    echo $valido ? escolasAtualizar($params) : falha('parametros inválido!');
     exit;
 }
 
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
         'id' => $id
     );
 
-    echo $id ? escolaApagar($params) : falha('parametros inválido!');
+    echo $id ? escolasApagar($params) : falha('parametros inválido!');
     exit;
 }
 

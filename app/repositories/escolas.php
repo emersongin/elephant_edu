@@ -2,7 +2,7 @@
 
 include_once "../config/database/conexao.php";
 
-function escolaTodas() {
+function escolasTodas() {
     try {
         global $conexao;
 
@@ -30,7 +30,7 @@ function escolaTodas() {
     
         $conexao->commit();
 
-        return sucesso($escolas ? $escolas : []);
+        return sucesso(count($escolas) ? $escolas : []);
     
     } catch(PDOException $erro) {
         $conexao->rollback();
@@ -39,7 +39,7 @@ function escolaTodas() {
     }
 }
 
-function escolaID($params) {
+function escolasID($params) {
     try {
         global $conexao;
 
@@ -78,7 +78,7 @@ function escolaID($params) {
     }
 }
 
-function escolaInserir($params) {
+function escolasInserir($params) {
     try {
         global $conexao;
 
@@ -113,7 +113,7 @@ function escolaInserir($params) {
     }
 }
 
-function escolaAtualizar($params) {
+function escolasAtualizar($params) {
     try {
         global $conexao;
 
@@ -143,7 +143,7 @@ function escolaAtualizar($params) {
     }
 }
 
-function escolaApagar($params) {
+function escolasApagar($params) {
     try {
         global $conexao;
 
