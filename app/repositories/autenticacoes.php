@@ -10,7 +10,8 @@ function autenticacaoUsuario($params) {
 
         $sql = 
             "SELECT
-                u.id
+                u.id,
+                u.id_perfil
             FROM
                 usuarios u
             WHERE

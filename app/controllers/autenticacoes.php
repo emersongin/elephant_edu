@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 	if ($usuario) {
 		$_SESSION['id'] = $usuario['id'];
+		$_SESSION['id_perfil'] = $usuario['id_perfil'];
 
 		header("Location:../../dashboard.php");
 
