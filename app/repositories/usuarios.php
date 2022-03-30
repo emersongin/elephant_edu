@@ -3,6 +3,7 @@
 include "../config/database/conexao.php";
 
 function usuariosTodas() {
+    
     try {
         global $conexao;
 
@@ -37,6 +38,7 @@ function usuariosTodas() {
 }
 
 function usuariosID($params) {
+    
     try {
         global $conexao;
 
@@ -73,6 +75,7 @@ function usuariosID($params) {
 }
 
 function usuariosInserir($params) {
+    
     try {
         global $conexao;
 
@@ -112,6 +115,7 @@ function usuariosInserir($params) {
 }
 
 function usuariosAtualizar($params) {
+
     try {
         global $conexao;
 
@@ -143,6 +147,7 @@ function usuariosAtualizar($params) {
 }
 
 function usuariosApagar($params) {
+    
     try {
         global $conexao;
 

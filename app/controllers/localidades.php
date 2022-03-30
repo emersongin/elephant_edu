@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $valido = $descricao && $id_setor;
     $params = array(
         'descricao'  => $descricao,
-        'id_setor' => $id_setor
+        'id_setor'   => $id_setor
     );
 
     echo $valido ? localidadesInserir($params) : falha('parametros inválido!');
@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $params = array(
         'id'             => $id,
         'descricao'      => $descricao,
-        'id_setor'     => $id_setor
+        'id_setor'       => $id_setor
     );
 
     echo $valido ? localidadesAtualizar($params) : falha('parametros inválido!');
