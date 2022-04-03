@@ -23,12 +23,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['id'] = $usuario['id'];
 		$_SESSION['id_perfil'] = $usuario['id_perfil'];
 
-		header("Location:../../dashboard.php");
+		header("Location:../views/dashboard.php");
 
 	} else{
 		$_SESSION['erro_login'] = true;
 
-		header("Location:../../login.php");
+		header("Location:../views/login.php");
 
 	}
 

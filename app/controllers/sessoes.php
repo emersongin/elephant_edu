@@ -5,10 +5,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	session_start();
 
 	if (isset($_SESSION['id'])) {
-		header("Location:dashboard.php");
-	
+		header("Location:app/views/dashboard.php");
+
 	} else {
-		header("Location:login.php");
+		header("Location:app/views/login.php");
 	
 	}
 }

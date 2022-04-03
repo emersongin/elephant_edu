@@ -14,9 +14,9 @@
 
         <link rel="icon" type="image/png" sizes="16x16" href="assets/img/logoFavicon.png">
 
-        <link rel="stylesheet" href="assets/css/dashboard.css">
+        <link rel="stylesheet" href="../assets/css/dashboard.css">
         <!-- bootstrap 4 -->
-        <link rel="stylesheet" href="assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
 
         <title>Elephant EDU :: Dashboard</title>
     </head>
@@ -26,7 +26,7 @@
                 <div class="col-3 card" style="background-color: #153575; height: 100vh;">
                     <a id="dashboard" href="#">
                         <div id="container-logo" class="d-flex justify-content-center" style="height: 7vh; margin-top: 1.25rem">
-                            <img id="img-fluid" src="assets/img/logoDashboard.svg" alt="logo">
+                            <img id="img-fluid" src="../assets/img/elephantLogo.png" alt="logo">
                         </div>
                     </a>
 
@@ -45,7 +45,7 @@
 
                     <div class="card" style="background-color: #7F9ECD;"id="">
                         <h3 style="color: #FFF">Cargo:</h3>
-                        <img src="assets/img/avatar_man_boy.png" style="width: 50px; height: 50px;" alt="">
+                        <img src="../assets/img/avatar_man_boy.png" style="width: 50px; height: 50px;" alt="">
                         <h4 style="color: #FFF">Nome Sobrenome</h4>
 
                         <button type="" class="">SAIR</button>

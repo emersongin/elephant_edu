@@ -1,0 +1,1 @@
+ALTER TABLE `usuarios` ADD `token` VARCHAR(255) NOT NULL AFTER `telefone`;

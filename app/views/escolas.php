@@ -1,5 +1,5 @@
 <?php 
-    include_once './app/views/templates/header.php';
+    include_once './templates/header.php';
 ?>
 
         <main>
@@ -71,5 +71,5 @@
             </div>
         </main>
 <?php 
-    include_once './app/views/templates/footer.php';
+    include_once './templates/footer.php';
 ?>
