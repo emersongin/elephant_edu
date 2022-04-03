@@ -2,6 +2,7 @@
 
 include_once '../includes/methodes.php';
 include_once '../includes/functions.php';
+include_once '../includes/autorizacao.php';
 include_once '../repositories/setores.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'GET') {

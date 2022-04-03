@@ -20,6 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	session_start();
 		
 	if ($usuario) {
+		$_SESSION['id'] = $usuario['id'];
 		$_SESSION['token'] = $usuario['token'];
 		$_SESSION['id_perfil'] = $usuario['id_perfil'];
 

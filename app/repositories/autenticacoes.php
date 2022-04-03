@@ -55,3 +55,39 @@ function autenticacaoUsuario($params) {
         return falha($erro, 500);
     }
 }
+
+function autorizacaoToken($params) {
+    try {
+        global $conexao;
+
+        $conexao->beginTransaction();
+
+        $sql = 
+            "SELECT
+                COUNT(*) as autorizado
+            FROM
+                usuarios u
+            WHERE
+                u.id = :id
+                AND u.token = :token
+                AND u.id_perfil = :id_perfil";
+
+        $consulta = $conexao->prepare($sql);
+        $consulta->execute([
+            'id'        => $params['id'],
+            'token'     => $params['token'],
+            'id_perfil' => $params['id_perfil']
+        ]);
+    
+        $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
+
+        $conexao->commit();
+
+        return $usuario['autorizado'];
+    
+    } catch(PDOException $erro) {
+        $conexao->rollback();
+
+        return falha($erro, 500);
+    }
+}
