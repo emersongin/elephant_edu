@@ -15,26 +15,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'senha' => $senha
     );
 
-    $valido ? $usuario = autenticacaoUsuario($params) : falha('parametros inválido!');
+    $usuario = autenticacaoUsuario($params);
 
 	session_start();
 		
 	if ($usuario) {
-		$_SESSION['id'] = $usuario['id'];
+		$_SESSION['token'] = $usuario['token'];
 		$_SESSION['id_perfil'] = $usuario['id_perfil'];
 
+		echo sucesso('usuário autenticado!');
 		header("Location:../views/dashboard.php");
 
 	} else{
 		$_SESSION['erro_login'] = true;
 
+		echo falha('usuário não autenticado!', 401);
 		header("Location:../views/login.php");
-
+		
 	}
 
     exit;
 }
-
 
 echo falha("metodo {$_SERVER['REQUEST_METHOD']} não disponível.");
 exit;

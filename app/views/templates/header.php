@@ -1,7 +1,13 @@
 <?php 
     session_start();
 
-    $id_perfil = intval($_SESSION['id_perfil']) == 1;
+    if(isset($_SESSION['token'])) {
+        $perfil_admin = intval($_SESSION['id_perfil']) == 1;
+        
+    } else {
+        header("Location:../views/login.php");
+        
+    }
 
 ?>
 
@@ -12,7 +18,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/img/logoFavicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/logoFavicon.png">
 
         <link rel="stylesheet" href="../assets/css/dashboard.css">
         <!-- bootstrap 4 -->
@@ -36,7 +42,7 @@
                         <ul>
                             <li><a href="dashboard.php" class="btn">Inicio</a></li>
 
-                            <?= $id_perfil ? '<li><a href="cadastro.php" class="btn">Cadastro</a></li>' : '' ?>
+                            <?= $perfil_admin ? '<li><a href="cadastro.php" class="btn">Cadastro</a></li>' : '' ?>
                             
                             <li><a href="visitas.php" class="btn">Visitas</a></li>
                             <li><a href="#" class="btn">Relatório</a></li>
@@ -48,7 +54,8 @@
                         <img src="../assets/img/avatar_man_boy.png" style="width: 50px; height: 50px;" alt="">
                         <h4 style="color: #FFF">Nome Sobrenome</h4>
 
-                        <button type="" class="">SAIR</button>
+                        <button onclick="logout();">SAIR</button>
+
                         <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
                     </div>
                 </div>

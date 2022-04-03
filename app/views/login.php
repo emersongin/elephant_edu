@@ -7,8 +7,6 @@
 		$erro_login = isset($_SESSION['erro_login']) ? $_SESSION['erro_login'] : false;
 
 		unset($_SESSION['erro_login']);
-
-		// var_dump($_SESSION);
 	
 	?>
 
@@ -48,7 +46,7 @@
 							</div>
 					
 							<div class="label-float">
-								<input name="senha" type="password" id="senha" placeholder="" required>
+								<input name="senha" type="current-password" id="senha" placeholder="" required>
 								<label id="senhaLabel" for="senha">Senha</label>
 								<i class="fa fa-eye" aria-hidden="true"></i>
 							</div>
@@ -65,8 +63,7 @@
 		</main>
 
 	<!-- importanto script js -->
-	<script src="../assets/js"></script>
-
+	<script src="../assets/js/script.js"></script>
 	</body>
 
 </html>
