@@ -103,11 +103,74 @@ function visitasID($params) {
 }
 
 function visitasInserir($params) {
+	try {
+        global $conexao;
 
+        $conexao->beginTransaction();
+
+        $sql = 
+            "INSERT INTO visitas
+            (
+                conteudo,
+                professor,
+                telefone,
+                data_visita,
+                criado_em
+            ) VALUES 
+            (
+                :conteudo,
+                :professor,
+                :telefone,
+                :data_visita,
+                :criado_em
+            )";
+
+        $consulta = $conexao->prepare($sql);
+        $consulta->execute($params);
+
+        $id = $conexao->lastInsertId();
+    
+        $conexao->commit();
+
+        return sucesso($id, 201);
+    
+    } catch(PDOException $erro) {
+        $conexao->rollback();
+        
+        return falha($erro, 500);
+    }
 }
 
 function visitasAtualizar($params) {
+	try {
+        global $conexao;
 
+        $conexao->beginTransaction();
+
+        $sql = 
+            "UPDATE 
+                visitas
+            SET
+                conteudo = :conteudo,
+				professor = :professor,
+				telefone = :telefone,
+				data_visita = :data_visita,
+				criado_em = :criado_em
+            WHERE
+                id = :id";
+
+        $consulta = $conexao->prepare($sql);
+        $consulta->execute($params);
+    
+        $conexao->commit();
+
+        return sucesso(true);
+    
+    } catch(PDOException $erro) {
+        $conexao->rollback();
+        
+        return falha($erro, 500);
+    }
 }
 
 function visitasApagar($params) {

@@ -6,7 +6,6 @@ include_once '../includes/autorizacao.php';
 include_once '../repositories/visitas.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
-
     if(isset($_GET['id'])) {
         $id = isset($_GET['id']) ? parseId($_GET['id']) : false;
 
@@ -25,7 +24,6 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $id_usuario = isset($_POST['id_usuario']) ? parseID($_POST['id_usuario']) : false;
     $id_setor = isset($_POST['id_setor']) ? parseID($_POST['id_setor']) : false;
     $id_escola = isset($_POST['id_escola']) ? parseID($_POST['id_escola']) : false;
@@ -54,7 +52,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    
     $id = isset($_GET['id']) ? parseId($_GET['id']) : false;
     $id_usuario = isset($_POST['id_usuario']) ? parseID($_POST['id_usuario']) : false;
     $id_setor = isset($_POST['id_setor']) ? parseID($_POST['id_setor']) : false;
@@ -85,7 +82,6 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-  
     $id = isset($_DELETE['id']) ? parseId($_DELETE['id']) : false;
 
     $params = array(
