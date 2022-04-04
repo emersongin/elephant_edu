@@ -11,6 +11,7 @@ function autenticacaoUsuario($params) {
         $sql = 
             "SELECT
                 u.id,
+                u.nome as nome_usuario,
                 u.id_perfil
             FROM
                 usuarios u

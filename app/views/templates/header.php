@@ -2,15 +2,19 @@
     session_start();
 
     if(isset($_SESSION['token'])) {
+        
         $perfil_admin = intval($_SESSION['id_perfil']) == 1;
-
-        $pagina_atual = basename($_SERVER["REQUEST_URI"],".php");
+        $pagina_atual = basename($_SERVER["REQUEST_URI"], ".php");
+        $titulo = '';
+        $nome_usuario = $_SESSION['nome_usuario'];
 
         switch ($pagina_atual) {
             case 'dashboard':
+                $titulo = 'Início';
                 break;
             case 'usuarios':
                 if(!$perfil_admin) header('Location:dashboard.php');
+                $titulo = 'Usuários';
                 break;
         }
         
@@ -31,12 +35,13 @@
         <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/logoFavicon.png">
 
         <!-- bootstrap 4 -->
+        <link rel="stylesheet" href="../assets/lib/font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="../assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../views/components/burguer-menu/style.css">
         <link rel="stylesheet" href="../assets/css/dashboard.css">
 
-        <title>Elephant EDU :: Dashboard</title>
+        <title>Elephant EDU :: <?= $titulo; ?> </title>
     </head>
     <body>
         

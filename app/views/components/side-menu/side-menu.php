@@ -1,9 +1,8 @@
+
 <div class="card" style="background-color: #153575; height: 100vh;">
-    <a id="dashboard" href="#">
-        <div id="container-logo" class="d-flex justify-content-center" style="height: 7vh; margin-top: 1.25rem">
-            <img id="img-fluid" src="../assets/img/elephantLogo.png" alt="logo">
-        </div>
-    </a>
+    <div id="logo-container" class="container">
+        <img id="img-fluid" src="../assets/img/logoDashboard.svg" alt="logo">
+    </div>
 
     <hr>
 
@@ -21,12 +20,13 @@
     <div class="card" style="background-color: #7F9ECD;"id="">
         <h3 style="color: #FFF">Cargo:</h3>
         <img src="../assets/img/avatar_man_boy.png" style="width: 50px; height: 50px;" alt="">
-        <h4 style="color: #FFF">Nome Sobrenome</h4>
+        <h4 style="color: #FFF"><?= $nome_usuario; ?></h4>
 
         <a href="../controllers/logout.php">
-            <button class="btn btn-outline-danger w-100">SAIR</button>
+            <button class="btn btn-outline-danger w-100">
+                SAIR <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
         </a>
 
-        <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
     </div>
 </div>
