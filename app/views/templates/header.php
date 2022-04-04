@@ -3,6 +3,16 @@
 
     if(isset($_SESSION['token'])) {
         $perfil_admin = intval($_SESSION['id_perfil']) == 1;
+
+        $pagina_atual = basename($_SERVER["REQUEST_URI"],".php");
+
+        switch ($pagina_atual) {
+            case 'dashboard':
+                break;
+            case 'usuarios':
+                if(!$perfil_admin) header('Location:dashboard.php');
+                break;
+        }
         
     } else {
         header("Location:/elephant_edu/app/views/login.php");
