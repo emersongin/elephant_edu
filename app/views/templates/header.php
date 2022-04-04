@@ -20,44 +20,32 @@
 
         <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/logoFavicon.png">
 
-        <link rel="stylesheet" href="../assets/css/dashboard.css">
         <!-- bootstrap 4 -->
         <link rel="stylesheet" href="../assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../views/components/burguer-menu/style.css">
+        <link rel="stylesheet" href="../assets/css/dashboard.css">
 
         <title>Elephant EDU :: Dashboard</title>
     </head>
     <body>
-        <div class="container" style="margin: 0 200px; padding: 0;">
-            <div class="row">
-                <div class="col-3 card" style="background-color: #153575; height: 100vh;">
-                    <a id="dashboard" href="#">
-                        <div id="container-logo" class="d-flex justify-content-center" style="height: 7vh; margin-top: 1.25rem">
-                            <img id="img-fluid" src="../assets/img/elephantLogo.png" alt="logo">
-                        </div>
-                    </a>
+        
+        <div class="row">
 
-                    <hr> <!-- Falta estilizar o hr --->
-
-                    <div id="container-menu" style="margin-top: 50px">
-                        <ul>
-                            <li><a href="dashboard.php" class="btn">Inicio</a></li>
-
-                            <?= $perfil_admin ? '<li><a href="usuarios.php" class="btn">Cadastro</a></li>' : '' ?>
-                            
-                            <li><a href="visitas.php" class="btn">Visitas</a></li>
-                            <li><a href="#" class="btn">Relatório</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="card" style="background-color: #7F9ECD;"id="">
-                        <h3 style="color: #FFF">Cargo:</h3>
-                        <img src="../assets/img/avatar_man_boy.png" style="width: 50px; height: 50px;" alt="">
-                        <h4 style="color: #FFF">Nome Sobrenome</h4>
-
-                        <a href="../controllers/logout.php">
-                            <button class="btn btn-outline-danger w-100">SAIR</button>
-                        </a>
-
-                        <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
-                    </div>
+            <!-- mobile - tablete -->
+                <div class="col-12 d-block d-md-none bg-danger">
+                    <?= include_once '../views/components/burguer-menu/burguer-menu.php'; ?>
                 </div>
+            <!-- mobile - tablete -->
+
+            <!-- desktop -->
+                <div class="col-3 d-none d-md-block">
+                    <?= include_once '../views/components/side-menu/side-menu.php'; ?>
+                </div>
+            <!-- desktop -->
+
+            <!-- conteudo -->
+                <div class="col-12 col-md-9">
+            <!-- conteudo... -->
+
+
