@@ -46,7 +46,7 @@
 							</div>
 					
 							<div class="label-float">
-								<input name="senha" type="current-password" id="senha" placeholder="" required>
+								<input name="senha" type="password" id="senha" placeholder="" required>
 								<label id="senhaLabel" for="senha">Senha</label>
 								<i class="fa fa-eye" aria-hidden="true"></i>
 							</div>
