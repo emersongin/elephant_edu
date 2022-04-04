@@ -5,6 +5,6 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 	if (isset($_SESSION['token'])) {	
 		session_destroy();
-		header("Location:app/views/login.php");
+		header("Location:/elephant_edu/app/views/login.php");
 	}
 }

@@ -25,13 +25,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['id_perfil'] = $usuario['id_perfil'];
 
 		echo sucesso('usuário autenticado!');
-		header("Location:../views/dashboard.php");
+		header("Location:/elephant_edu/app/views/dashboard.php");
 
 	} else{
 		$_SESSION['erro_login'] = true;
 
 		echo falha('usuário não autenticado!', 401);
-		header("Location:../views/login.php");
+		header("Location:/elephant_edu/app/views/login.php");
 		
 	}
 

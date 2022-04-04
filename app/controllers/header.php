@@ -55,7 +55,7 @@
                         <h4 style="color: #FFF">Nome Sobrenome</h4>
 
                         <a href="../controllers/logout.php">
-                            <button class="btn btn-outline-danger w-100">SAIR</button>
+                            <button>SAIR</button>
                         </a>
 
                         <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
