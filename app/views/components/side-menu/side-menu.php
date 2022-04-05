@@ -13,7 +13,7 @@
             <?= $perfil_admin ? '<li><a href="usuarios.php" class="btn">Cadastro</a></li>' : '' ?>
 
             <li><a href="visitas.php" class="btn">Visitas</a></li>
-            <li><a href="#" class="btn">Relatório</a></li>
+            <li><a href="../views/relatorios.php" class="btn">Relatório</a></li>
         </ul>
     </div>
 
