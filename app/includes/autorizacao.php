@@ -13,4 +13,4 @@ $params = array(
     'id_perfil' => 1
 );
 
-if(autorizacaoToken($params) == false) echo falha('token de usuário não autorizado!'); exit;
+if(autorizacaoToken($params) == false) echo falha('usuário não autorizado!'); exit;
