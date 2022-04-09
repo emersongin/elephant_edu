@@ -1,5 +1,5 @@
 <?php
-require('../../FPDF/fpdf.php');
+require('../assets/lib/fpdf/fpdf.php');
 
 $nome = "Hellod";
 

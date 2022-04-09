@@ -11,6 +11,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent22">
 
+            <hr>
+
             <!-- Links --> 
             <!-- <span class="sr-only">(current)</span> -->
             <ul class="navbar-nav mr-auto">
@@ -23,6 +25,21 @@
 
                 <?= $perfil_admin ? '<li class="nav-item"><a href="usuarios.php" class="nav-link text-uppercase font-weight-bold '. ($pagina_atual == 'usuarios' ? 'text-white' : '') .' ">Usuários</a></li>' : '' ?>
 
+                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'escolas' ? 'text-white' : ''; ?>">
+                    <a href="escolas.php" class="nav-link">
+                        Escolas
+                    </a>
+                </li>
+                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'text-white' : ''; ?>">
+                    <a href="setores.php" class="nav-link">
+                        Setores
+                    </a>
+                </li>
+                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'text-white' : ''; ?>">
+                    <a href="localidades.php" class="nav-link">
+                        Localidades
+                    </a>
+                </li>
                 <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'visitas' ? 'text-white' : ''; ?>">
                     <a href="visitas.php" class="nav-link">
                         Visitas
@@ -31,6 +48,14 @@
                 <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'text-white' : ''; ?>">
                     <a href="../views/relatorios.php" class="nav-link">
                         Relatório
+                    </a>
+                </li>
+
+                <hr>
+
+                <li class="nav-item text-uppercase font-weight-bold">
+                    <a href="../controllers/logout.php" class="nav-link">
+                        Sair
                     </a>
                 </li>
 
