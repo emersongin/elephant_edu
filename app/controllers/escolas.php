@@ -2,8 +2,8 @@
 
 include_once '../includes/methodes.php';
 include_once '../includes/functions.php';
-include_once '../includes/autorizacao.php';
 include_once '../repositories/escolas.php';
+include_once '../includes/autorizacao.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
     if(isset($_GET['id'])) {
@@ -24,6 +24,12 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if(autorizacaoToken(array(
+        'id' => $auth_user_id,
+        'token' => $auth_user_token,
+        'id_perfil' => 1
+    )) == false) echo falha('usuário ou token não autorizado!'); exit;
 
     $nome = isset($_POST['nome']) ? parseTexto($_POST['nome']) : false;
     $id_responsavel = isset($_POST['id_responsavel']) ? parseId($_POST['id_responsavel']) : false;
