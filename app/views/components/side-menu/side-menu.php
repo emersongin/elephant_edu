@@ -8,7 +8,7 @@
 
     <div id="container-menu" style="margin-top: 50px">
         <ul>
-            <li><a href="dashboard.php" class="btn">Inicio</a></li> -->
+            <li><a href="inicio.php" class="btn">Inicio</a></li> -->
 
             <?= $perfil_admin ? '<li><a href="usuarios.php" class="btn">Cadastro</a></li>' : '' ?>
 

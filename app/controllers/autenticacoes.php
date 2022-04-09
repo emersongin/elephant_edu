@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['id_perfil'] = $usuario['id_perfil'];
 
 		echo sucesso('usuário autenticado!');
-		header("Location:/elephant_edu/app/views/dashboard.php");
+		header("Location:/elephant_edu/app/views/inicio.php");
 
 	} else{
 		$_SESSION['erro_login'] = true;

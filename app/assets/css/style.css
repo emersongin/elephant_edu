@@ -2,3 +2,11 @@ body {
     background-image: url("../img/background-main.jpg");
     background-size: cover;
 }
+
+.text-theme-primary {
+    color: #153575;
+}
+
+.bg-theme-primary {
+    background-color: #153575;
+}

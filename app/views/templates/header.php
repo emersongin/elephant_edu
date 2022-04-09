@@ -9,12 +9,34 @@
         $nome_usuario = $_SESSION['nome_usuario'];
 
         switch ($pagina_atual) {
-            case 'dashboard':
+            case 'inicio':
                 $titulo = 'Início';
+
                 break;
             case 'usuarios':
-                if(!$perfil_admin) header('Location:dashboard.php');
+                if(!$perfil_admin) header('Location:inicio.php');
                 $titulo = 'Usuários';
+
+                break;
+            case 'escolas':
+                $titulo = 'Escolas';
+
+                break;
+            case 'localidades':
+                $titulo = 'Localidades';
+
+                break;
+            case 'setores':
+                $titulo = 'Setores';
+
+                break;
+            case 'visitas':
+                $titulo = 'Visitas';
+
+                break;
+            case 'relatorios':
+                $titulo = 'Relatórios';
+
                 break;
         }
         
@@ -39,7 +61,7 @@
         <link rel="stylesheet" href="../assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../views/components/burguer-menu/style.css">
-        <link rel="stylesheet" href="../assets/css/dashboard.css">
+        <link rel="stylesheet" href="../assets/css/inicio.css">
 
         <title>Elephant EDU :: <?= $titulo; ?> </title>
     </head>
@@ -48,14 +70,14 @@
         <div class="row">
 
             <!-- mobile - tablete -->
-                <div class="col-12 d-block d-md-none bg-danger">
-                    <?= include_once '../views/components/burguer-menu/burguer-menu.php'; ?>
+                <div class="col-12 d-block d-md-none">
+                    <?php include_once '../views/components/burguer-menu/burguer-menu.php'; ?>
                 </div>
             <!-- mobile - tablete -->
 
             <!-- desktop -->
                 <div class="col-3 d-none d-md-block">
-                    <?= include_once '../views/components/side-menu/side-menu.php'; ?>
+                    <?php include_once '../views/components/side-menu/side-menu.php'; ?>
                 </div>
             <!-- desktop -->
 
