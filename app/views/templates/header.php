@@ -76,13 +76,13 @@
             <!-- mobile - tablete -->
 
             <!-- desktop -->
-                <div class="col-3 d-none d-md-block">
+                <div class="col-2 d-none d-md-block">
                     <?php include_once '../views/components/side-menu/side-menu.php'; ?>
                 </div>
             <!-- desktop -->
 
             <!-- conteudo -->
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-10">
             <!-- conteudo... -->
 
 
