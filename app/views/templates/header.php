@@ -22,12 +22,12 @@
                 $titulo = 'Escolas';
 
                 break;
-            case 'localidades':
-                $titulo = 'Localidades';
-
-                break;
             case 'setores':
                 $titulo = 'Setores';
+
+                break;
+            case 'localidades':
+                $titulo = 'Localidades';
 
                 break;
             case 'visitas':

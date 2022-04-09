@@ -25,28 +25,28 @@
 
                 <?= $perfil_admin ? '<li class="nav-item"><a href="usuarios.php" class="nav-link text-uppercase font-weight-bold '. ($pagina_atual == 'usuarios' ? 'text-white' : '') .' ">Usuários</a></li>' : '' ?>
 
-                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'escolas' ? 'text-white' : ''; ?>">
-                    <a href="escolas.php" class="nav-link">
+                <li class="nav-item">
+                    <a href="escolas.php" class="nav-link text-uppercase font-weight-bold <?= $pagina_atual == 'escolas' ? 'text-white' : ''; ?>">
                         Escolas
                     </a>
                 </li>
-                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'text-white' : ''; ?>">
-                    <a href="setores.php" class="nav-link">
+                <li class="nav-item">
+                    <a href="setores.php" class="nav-link text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'text-white' : ''; ?>">
                         Setores
                     </a>
                 </li>
-                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'text-white' : ''; ?>">
-                    <a href="localidades.php" class="nav-link">
+                <li class="nav-item">
+                    <a href="localidades.php" class="nav-link text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'text-white' : ''; ?>">
                         Localidades
                     </a>
                 </li>
-                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'visitas' ? 'text-white' : ''; ?>">
-                    <a href="visitas.php" class="nav-link">
+                <li class="nav-item">
+                    <a href="visitas.php" class="nav-link text-uppercase font-weight-bold <?= $pagina_atual == 'visitas' ? 'text-white' : ''; ?>">
                         Visitas
                     </a>
                 </li>
-                <li class="nav-item text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'text-white' : ''; ?>">
-                    <a href="../views/relatorios.php" class="nav-link">
+                <li class="nav-item">
+                    <a href="../views/relatorios.php" class="nav-link text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'text-white' : ''; ?>">
                         Relatório
                     </a>
                 </li>
