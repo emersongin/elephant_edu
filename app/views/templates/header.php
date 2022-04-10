@@ -58,7 +58,7 @@
 
         <!-- bootstrap 4 -->
         <link rel="stylesheet" href="../assets/lib/font-awesome-4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../assets/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/lib/bootstrap-5.0.2-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../views/components/burguer-menu/style.css">
         <link rel="stylesheet" href="../assets/css/inicio.css">
