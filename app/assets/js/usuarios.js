@@ -2,6 +2,33 @@ window.onload = () => {
     listarUsuario();
     listarPerfis();
 
+    submitForm();
+
+}
+
+function submitForm() {
+    const form = document.getElementById('form-usuarios');
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const cadastro = {
+            nome: formData.get('nome'),
+            cpf: formData.get('cpf'),
+            telefone: formData.get('telefone'),
+            senha: formData.get('senha'),
+            id_perfil: formData.get('id_perfil')
+        };
+
+        console.log(cadastro);
+
+        const usuario = await fetchCadastrarUsuario(cadastro);
+
+        console.log(usuario);
+
+    
+    });
 }
 
 async function listarUsuario() {
@@ -65,6 +92,28 @@ function fetchUsuarios() {
             const usuarios = await response.json();
 
             res(usuarios);
+        } catch (error) {
+            rej(false);
+        }
+    });
+}
+
+function fetchCadastrarUsuario(cadastro) {
+    return new Promise(async (res, rej) => {
+        try {
+            const response = await fetch(server + 'usuarios.php', { 
+                method: 'POST', 
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                },
+                mode: 'cors',
+                cache: 'default',
+                body: Object.entries(cadastro).map(([k,v])=>{return k+'='+v}).join('&')
+            });
+            const usuario = await response.json();
+
+            res(usuario);
         } catch (error) {
             rej(false);
         }

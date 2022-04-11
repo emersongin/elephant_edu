@@ -26,35 +26,33 @@
                 <h4 class="py-3">Cadastrar usuário</h4>
                 <div class="card">
                     <div class="card-body">
-                    <form id="form-usuarios">
-                        <div class="row p-3">
+                        <form id="form-usuarios" class="row p-3">
                             <div class="col-12">
                                 <label for="usuario-nome" class="form-label fw-bold">Nome de usuário</label>
-                                <input type="text" class="form-control" id="usuario-nome" name="nome">
+                                <input type="text" class="form-control" id="usuario-nome" name="nome" required>
                             </div>
                             <div class="col-12">
                                 <label for="usuario-cpf" class="form-label fw-bold">CPF</label>
-                                <input type="text" class="form-control" id="usuario-cpf" name="cpf">
+                                <input type="text" class="form-control" id="usuario-cpf" name="cpf" required>
                             </div>
                             <div class="col-12">
                                 <label for="usuario-telefone" class="form-label fw-bold">Telefone</label>
-                                <input type="text" class="form-control" id="usuario-telefone" name="telefone">
+                                <input type="text" class="form-control" id="usuario-telefone" name="telefone" required>
                             </div>
                             <div class="col-12">
                                 <label for="usuario-senha" class="form-label fw-bold">Senha</label>
-                                <input type="text" class="form-control" id="usuario-senha" name="senha">
+                                <input type="text" class="form-control" id="usuario-senha" name="senha" required>
                             </div>
                             <div class="col-12">
                                 <label for="usuario-perfil" class="form-label fw-bold">Perfil</label>
-                                <select class="form-select form-select-lg" id="usuario-perfil" name="perfil">
+                                <select class="form-select form-select-lg" id="usuario-perfil" form="form-usuarios" name="id_perfil" required>
                                     <option disabled selected>selecione um perfil</option>
                                 </select>
                             </div>
                             <div class="col-12 pt-5 offset-md-7 col-md-5">
-                                <button type="button" class="btn btn-primary w-100">Cadastrar</button>
+                                <input type="submit" value="Cadastrar" class="btn btn-primary w-100">
                             </div>
-                        </div>
-                    </form>
+                        </form>
                     </div>
                 </div>
             </article>
