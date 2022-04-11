@@ -76,7 +76,7 @@
             <!-- mobile - tablete -->
 
             <!-- desktop -->
-                <div class="col-2 d-none d-md-block">
+                <div class="col-2 d-none d-md-block vh-100">
                     <?php include_once '../views/components/side-menu/side-menu.php'; ?>
                 </div>
             <!-- desktop -->

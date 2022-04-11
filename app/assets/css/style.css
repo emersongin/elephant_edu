@@ -10,3 +10,7 @@ body {
 .bg-theme-primary {
     background-color: #153575;
 }
+
+ul {
+    padding-left: 0px !important;
+}

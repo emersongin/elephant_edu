@@ -1,21 +1,21 @@
 
-<div class="card" style="background-color: #153575; height: 100vh;">
-    <div id="logo-container" class="container text-center">
+<div class="card h-100 w-100 bg-theme-primary">
+    <div class="container text-center">
         <img id="img-fluid" src="../assets/img/logoDashboard.svg" style="height: 40px !important;" alt="logo">
     </div>
 
     <hr>
 
-    <div id="container-menu" class="m-1 px-1">
+    <div class="m-1 px-1">
         <ul>
             <li><a href="inicio.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'inicio' ? 'btn-light' : 'btn-primary'; ?>">Inicio</a></li>
-
-            <?= $perfil_admin ? '<li><a href="usuarios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'usuarios' ? 'btn-light' : 'btn-primary') .' ">Usuários</a></li>' : 'btn-primary' ?>
-
             <li><a href="escolas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'escolas' ? 'btn-light' : 'btn-primary'; ?>">Escolas</a></li>
             <li><a href="setores.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'btn-light' : 'btn-primary'; ?>">Setores</a></li>
             <li><a href="localidades.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'btn-light' : 'btn-primary'; ?>">Localidades</a></li>
             <li><a href="visitas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'visitas' ? 'btn-light' : 'btn-primary'; ?>">Visitas</a></li>
+
+            <?= $perfil_admin ? '<li><a href="usuarios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'usuarios' ? 'btn-light' : 'btn-primary') .' ">Usuários</a></li>' : '' ?>
+
             <li><a href="../views/relatorios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>">Relatório</a></li>
         </ul>
     </div>

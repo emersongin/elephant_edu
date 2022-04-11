@@ -1,5 +1,4 @@
-$(document).ready(function () {
-    $('.third-button').on('click', function () {
-        $('.animated-icon3').toggleClass('open');
-    });
+document.querySelector('.second-button').addEventListener('click', function () {
+
+    document.querySelector('.animated-icon2').classList.toggle('open');
 });
