@@ -11,19 +11,11 @@ function parseTexto($dado) {
 function sucesso($dado = true, $code = 200) {
     http_response_code($code);
 
-    return json_encode(array(
-        'retorno' => true,
-        'dado' => $dado,
-        'code' => $code
-    ));
+    return json_encode($dado);
 }
 
 function falha($erro = false, $code = 400) {
     http_response_code($code);
 
-    return json_encode(array(
-        'retorno' => false,
-        'dado' => $erro,
-        'code' => $code
-    ));
+    return json_encode($erro);
 }
