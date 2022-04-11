@@ -26,21 +26,34 @@
                 <h4 class="py-3">Cadastrar usuário</h4>
                 <div class="card">
                     <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <form id="form-usuarios">
+                        <div class="row p-3">
+                            <div class="col-12">
+                                <label for="usuario-nome" class="form-label fw-bold">Nome de usuário</label>
+                                <input type="text" class="form-control" id="usuario-nome" name="nome">
+                            </div>
+                            <div class="col-12">
+                                <label for="usuario-cpf" class="form-label fw-bold">CPF</label>
+                                <input type="text" class="form-control" id="usuario-cpf" name="cpf">
+                            </div>
+                            <div class="col-12">
+                                <label for="usuario-telefone" class="form-label fw-bold">Telefone</label>
+                                <input type="text" class="form-control" id="usuario-telefone" name="telefone">
+                            </div>
+                            <div class="col-12">
+                                <label for="usuario-senha" class="form-label fw-bold">Senha</label>
+                                <input type="text" class="form-control" id="usuario-senha" name="senha">
+                            </div>
+                            <div class="col-12">
+                                <label for="usuario-perfil" class="form-label fw-bold">Perfil</label>
+                                <select class="form-select form-select-lg" id="usuario-perfil" name="perfil">
+                                    <option disabled selected>selecione um perfil</option>
+                                </select>
+                            </div>
+                            <div class="col-12 pt-5 offset-md-7 col-md-5">
+                                <button type="button" class="btn btn-primary w-100">Cadastrar</button>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     </div>
                 </div>

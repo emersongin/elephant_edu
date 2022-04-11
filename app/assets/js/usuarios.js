@@ -37,10 +37,24 @@ function linhaUsuario(usuario, index) {
 }
 
 async function listarPerfis() {
+    const select = document.getElementById('usuario-perfil');
+
+    select.disabled = true;
+
+    let opcoes = '<option disabled selected>selecione um perfil</option>';
 
     const perfis  = await fetchPerfis();
 
-    console.log(perfis);
+    if(perfis && perfis.length) {
+
+        perfis.forEach((perfil, index) => {
+            opcoes += `<option value="${perfil.id}">${perfil.descricao}</option>`;
+        });
+
+        select.innerHTML = opcoes;
+    }
+
+    select.disabled = false;
 
 }
 

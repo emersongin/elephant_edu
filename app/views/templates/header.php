@@ -7,6 +7,7 @@
         $pagina_atual = basename($_SERVER["REQUEST_URI"], ".php");
         $titulo = '';
         $nome_usuario = $_SESSION['nome_usuario'];
+        $perfil_usuario = $_SESSION['perfil_usuario'];
 
         switch ($pagina_atual) {
             case 'inicio':

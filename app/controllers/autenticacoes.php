@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($usuario) {
 		$_SESSION['id'] = $usuario['id'];
 		$_SESSION['nome_usuario'] = $usuario['nome_usuario'];
+		$_SESSION['perfil_usuario'] = $usuario['perfil_usuario'];
 		$_SESSION['token'] = $usuario['token'];
 		$_SESSION['id_perfil'] = $usuario['id_perfil'];
 

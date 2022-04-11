@@ -20,14 +20,16 @@
         </ul>
     </div>
 
-    <div class="card" style="background-color: #7F9ECD;"id="">
-        <h3 style="color: #FFF">Cargo:</h3>
-        <img src="../assets/img/avatar_man_boy.png" style="width: 50px; height: 50px;" alt="">
-        <h4 style="color: #FFF"><?= $nome_usuario; ?></h4>
-
-        <a href="../controllers/logout.php">
-            <button class="btn btn-outline-danger w-100 text-uppercase font-weight-bold">sair</button>
-        </a>
-
+    <div class="card mb-3 bg-theme-primary" style="max-width: 18rem;">
+        <div class="card-body text-success">
+        <h5 class="card-title text-white"><?= $nome_usuario; ?></h5>
+        <h6 class="card-text text-white"><?= $perfil_usuario; ?></h6>
+        </div>
+        <div class="card-footer bg-transparent">
+            <a href="../controllers/logout.php">
+                <button class="btn btn-outline-danger w-100 text-uppercase font-weight-bold">sair</button>
+            </a>
+        </div>
     </div>
+
 </div>

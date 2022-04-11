@@ -12,9 +12,11 @@ function autenticacaoUsuario($params) {
             "SELECT
                 u.id,
                 u.nome as nome_usuario,
-                u.id_perfil
+                u.id_perfil,
+                p.descricao as perfil_usuario
             FROM
                 usuarios u
+            JOIN perfis p ON p.id = u.id_perfil
             WHERE
                 u.nome = :nome
                 AND u.senha = :senha";
