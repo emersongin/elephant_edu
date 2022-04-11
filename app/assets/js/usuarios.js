@@ -1,5 +1,6 @@
 window.onload = () => {
     listarUsuario();
+    listarPerfis();
 
 }
 
@@ -8,7 +9,7 @@ async function listarUsuario() {
 
     tabela.innerHTML = spinner();
 
-    const usuarios  = await fetchUsuarios(server + 'usuarios.php', { method: 'GET' });
+    const usuarios  = await fetchUsuarios();
 
     if(usuarios && usuarios.length) {
         let linhas = '';
@@ -35,13 +36,34 @@ function linhaUsuario(usuario, index) {
     `;
 }
 
-function fetchUsuarios(url, params) {
+async function listarPerfis() {
+
+    const perfis  = await fetchPerfis();
+
+    console.log(perfis);
+
+}
+
+function fetchUsuarios() {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(url, params);
+            const response = await fetch(server + 'usuarios.php', { method: 'GET' });
             const usuarios = await response.json();
 
             res(usuarios);
+        } catch (error) {
+            rej(false);
+        }
+    });
+}
+
+function fetchPerfis(url, params) {
+    return new Promise(async (res, rej) => {
+        try {
+            const response = await fetch(server + 'perfis.php', { method: 'GET' });
+            const perfis = await response.json();
+
+            res(perfis);
         } catch (error) {
             rej(false);
         }
