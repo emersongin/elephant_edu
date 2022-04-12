@@ -2,11 +2,13 @@ window.onload = () => {
     listarUsuario();
     listarPerfis();
     submitFormCadastro();
+    submitFormAtualizar();
 
 }
 
 function submitFormCadastro() {
     const form = document.getElementById('form-cadastro-usuario');
+    const button = document.getElementById('btn-cadastro');
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -20,6 +22,8 @@ function submitFormCadastro() {
             id_perfil: formData.get('id_perfil')
         };
 
+        button.disabled = true;
+
         const usuario = await fetchCadastrarUsuario(cadastro);
 
         if(usuario) {
@@ -27,6 +31,41 @@ function submitFormCadastro() {
             form.reset();
 
         }
+
+        button.disabled = false;
+
+    });
+}
+
+function submitFormAtualizar() {
+    const form = document.getElementById('form-editar-usuario');
+    const button = document.getElementById('btn-atualizar');
+    const modal = new bootstrap.Modal(document.getElementById('modal-usuarios'));
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const atualizacao = {
+            id: formData.get('id'),
+            nome: formData.get('nome'),
+            cpf: formData.get('cpf'),
+            telefone: formData.get('telefone'),
+            id_perfil: formData.get('id_perfil')
+        };
+
+        button.disabled = true;
+
+        const usuario = await fetchAtualizarUsuario(atualizacao);
+
+        if(usuario) {
+            form.reset();
+            modal.hide();
+            listarUsuario();
+
+        }
+
+        button.disabled = false;
 
     });
 }
@@ -47,11 +86,13 @@ function editarUsuario(usuario) {
 
     form.reset();
 
+    const inputID = document.querySelector('#form-editar-usuario #usuario-id');
     const inputNome = document.querySelector('#form-editar-usuario #usuario-nome');
     const inputCPF = document.querySelector('#form-editar-usuario #usuario-cpf');
     const inputTelefone = document.querySelector('#form-editar-usuario #usuario-telefone');
     const selectPerfil = document.querySelector('#form-editar-usuario #usuario-perfil-editar');
 
+    inputID.value = usuario.id;
     inputNome.value = usuario.nome;
     inputCPF.value = usuario.cpf;
     inputTelefone.value = usuario.telefone;
@@ -153,6 +194,29 @@ function fetchCadastrarUsuario(cadastro) {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(cadastro)
+            });
+            const usuario = await response.json();
+
+            res(usuario);
+        } catch (error) {
+            rej(false);
+        }
+    });
+}
+
+function fetchAtualizarUsuario(atualizacao) {
+    return new Promise(async (res, rej) => {
+        try {
+            const response = await fetch(server + 'usuarios.php?' + new URLSearchParams({
+                id: atualizacao.id
+            }), { 
+                method: "PUT",
+                mode: "same-origin",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(atualizacao)
             });
             const usuario = await response.json();
 

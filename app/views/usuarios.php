@@ -45,12 +45,12 @@
                             </div>
                             <div class="col-12">
                                 <label for="usuario-perfil" class="form-label fw-bold">Perfil</label>
-                                <select class="form-select form-select-md usuario-perfil" id="usuario-perfil-cadastro" form="form-usuarios" name="id_perfil" required>
+                                <select class="form-select form-select-md usuario-perfil" id="usuario-perfil-cadastro" form="form-cadastro-usuario" name="id_perfil" required>
                                     <option disabled selected>selecione um perfil</option>
                                 </select>
                             </div>
                             <div class="col-12 pt-5 offset-md-7 col-md-5">
-                                <input id="btn-" type="submit" value="Cadastrar" class="btn btn-primary w-100">
+                                <input id="btn-cadastro" type="submit" value="Cadastrar" class="btn btn-primary w-100">
                             </div>
                         </form>
                     </div>
@@ -64,8 +64,8 @@
                             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <form id="form-editar-usuario" class="row p-3">
+                        <form id="form-editar-usuario" class="row p-3">
+                            <div class="modal-body">
                                 <div class="col-12">
                                     <label for="usuario-nome" class="form-label fw-bold">Nome de usuário</label>
                                     <input type="text" class="form-control" id="usuario-nome" name="nome" required>
@@ -80,16 +80,17 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="usuario-perfil" class="form-label fw-bold">Perfil</label>
-                                    <select class="form-select form-select-md usuario-perfil" id="usuario-perfil-editar" form="form-usuarios" name="id_perfil" required>
+                                    <select class="form-select form-select-md usuario-perfil" id="usuario-perfil-editar" form="form-editar-usuario" name="id_perfil" required>
                                         <option disabled selected>selecione um perfil</option>
                                     </select>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Atualizar</button>
-                        </div>
+                                <input type="hidden" id="usuario-id" name="id">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <input id="btn-atualizar" type="submit" value="Atualizar" class="btn btn-primary">
+                            </div>
+                        </form>
                     </div>
                 </div>
                 </div>
