@@ -23,10 +23,8 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit;
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {    
 
-    echo falha(json_encode($_GET)); exit;
-    
     $nome = isset($_POST['nome']) ? parseTexto($_POST['nome']) : false;
     $cpf = isset($_POST['cpf']) ? parseTexto($_POST['cpf']) : false;
     $senha = isset($_POST['senha']) ? parseTexto($_POST['senha']) : false;

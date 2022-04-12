@@ -1,13 +1,12 @@
 window.onload = () => {
     listarUsuario();
     listarPerfis();
-
-    submitForm();
+    submitFormCadastro();
 
 }
 
-function submitForm() {
-    const form = document.getElementById('form-usuarios');
+function submitFormCadastro() {
+    const form = document.getElementById('form-cadastro-usuario');
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -21,14 +20,43 @@ function submitForm() {
             id_perfil: formData.get('id_perfil')
         };
 
-        console.log(cadastro);
-
         const usuario = await fetchCadastrarUsuario(cadastro);
 
-        console.log(usuario);
+        if(usuario) {
+            listarUsuario();
+            form.reset();
 
-    
+        }
+
     });
+}
+
+async function excluirUsuario(usuario) {
+    if(confirm(`Deseja realmente excluir o usuário: ${usuario.nome}`)) {
+        const excluido = await fetchExcluirUsuario(usuario.id);
+
+        if(excluido) { 
+            listarUsuario(); 
+        }
+
+    }
+}
+
+function editarUsuario(usuario) {
+    const form = document.getElementById('form-editar-usuario');
+
+    form.reset();
+
+    const inputNome = document.querySelector('#form-editar-usuario #usuario-nome');
+    const inputCPF = document.querySelector('#form-editar-usuario #usuario-cpf');
+    const inputTelefone = document.querySelector('#form-editar-usuario #usuario-telefone');
+    const selectPerfil = document.querySelector('#form-editar-usuario #usuario-perfil-editar');
+
+    inputNome.value = usuario.nome;
+    inputCPF.value = usuario.cpf;
+    inputTelefone.value = usuario.telefone;
+    selectPerfil.value = usuario.id_perfil;
+
 }
 
 async function listarUsuario() {
@@ -56,17 +84,28 @@ function linhaUsuario(usuario, index) {
             <th class="table-light" scope="row">${index}</th>
             <td class="table-light">${usuario.nome}</td>
             <td class="table-light">${usuario.cpf}</td>
-            <td class="table-light">${usuario.telefone}</td>
-            <td class="table-light">${usuario.ds_perfil}</td>
-            <td class="table-light">...</td>
+            <td class="table-light d-none d-md-table-cell">${usuario.telefone}</td>
+            <td class="table-light d-none d-md-table-cell">${usuario.ds_perfil}</td>
+            <td class="table-light text-center">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-danger" title="editar usuário" data-bs-toggle="modal" data-bs-target="#modal-usuarios" onclick='editarUsuario(${JSON.stringify(usuario)});'>
+                        <i class="fa fa-pencil text-white" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn btn-warning" title="excluir usuário" onclick='excluirUsuario(${JSON.stringify(usuario)});'>
+                        <i class="fa fa-trash text-white" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </td>
         </tr>
     `;
 }
 
 async function listarPerfis() {
-    const select = document.getElementById('usuario-perfil');
+    const selects = document.getElementsByClassName('usuario-perfil');
 
-    select.disabled = true;
+    for (const select of selects) {
+        select.disabled = true;
+    }
 
     let opcoes = '<option disabled selected>selecione um perfil</option>';
 
@@ -78,10 +117,15 @@ async function listarPerfis() {
             opcoes += `<option value="${perfil.id}">${perfil.descricao}</option>`;
         });
 
-        select.innerHTML = opcoes;
+        for (const select of selects) {
+            select.innerHTML = opcoes;
+        }
+        
     }
 
-    select.disabled = false;
+    for (const select of selects) {
+        select.disabled = false;
+    }
 
 }
 
@@ -102,20 +146,41 @@ function fetchCadastrarUsuario(cadastro) {
     return new Promise(async (res, rej) => {
         try {
             const response = await fetch(server + 'usuarios.php', { 
-                method: 'POST', 
+                method: "POST",
+                mode: "same-origin",
+                credentials: "same-origin",
                 headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    "Content-Type": "application/json"
                 },
-                mode: 'cors',
-                cache: 'default',
-                body: Object.entries(cadastro).map(([k,v])=>{return k+'='+v}).join('&')
+                body: JSON.stringify(cadastro)
             });
             const usuario = await response.json();
 
             res(usuario);
         } catch (error) {
             rej(false);
+        }
+    });
+}
+
+function fetchExcluirUsuario(id) {
+    return new Promise(async (res, rej) => {
+        try {
+            const response = await fetch(server + 'usuarios.php', { 
+                method: "DELETE",
+                mode: "same-origin",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id })
+            });
+            const usuario = await response.json();
+
+            res(usuario);
+        } catch (error) {
+            rej(false);
+            
         }
     });
 }

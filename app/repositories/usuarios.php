@@ -75,7 +75,6 @@ function usuariosID($params) {
 }
 
 function usuariosInserir($params) {
-    
     try {
         global $conexao;
 
@@ -147,7 +146,6 @@ function usuariosAtualizar($params) {
 }
 
 function usuariosApagar($params) {
-    
     try {
         global $conexao;
 
@@ -160,7 +158,7 @@ function usuariosApagar($params) {
         
         $conexao->commit();
 
-        return sucesso(true, 204);
+        return sucesso(true);
     
     } catch(PDOException $erro) {
         $conexao->rollback();

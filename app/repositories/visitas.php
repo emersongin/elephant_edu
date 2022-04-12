@@ -186,7 +186,7 @@ function visitasApagar($params) {
 		
 		$conexao->commit();
 
-		return sucesso(true, 204);
+		return sucesso(true);
 
 	} catch(PDOException $erro) {
 		$conexao->rollback();
