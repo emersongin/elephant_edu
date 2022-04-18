@@ -9,14 +9,40 @@
     <div class="m-1 px-1">
         <ul>
             <li><a href="inicio.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'inicio' ? 'btn-light' : 'btn-primary'; ?>">Inicio</a></li>
-            <li><a href="escolas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'escolas' ? 'btn-light' : 'btn-primary'; ?>">Escolas</a></li>
-            <li><a href="setores.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'btn-light' : 'btn-primary'; ?>">Setores</a></li>
-            <li><a href="localidades.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'btn-light' : 'btn-primary'; ?>">Localidades</a></li>
-            <li><a href="visitas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'visitas' ? 'btn-light' : 'btn-primary'; ?>">Visitas</a></li>
 
-            <?= $perfil_admin ? '<li><a href="usuarios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'usuarios' ? 'btn-light' : 'btn-primary') .' ">Usuários</a></li>' : '' ?>
+            <li>
+                <div class="mb-1 w-100">
+                    <button 
+                        class="btn w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'setores' || $pagina_atual == 'localidades' || $pagina_atual == 'escolas' || $pagina_atual == 'visitas' || $pagina_atual == 'usuarios' ? 'btn-light' : 'btn-primary'; ?>" 
+                        type="button" data-bs-toggle="collapse" data-bs-target="#collapse-menu-cadastro" aria-expanded="false" aria-controls="collapse-menu-cadastro">
+                        Cadastros
+                    </button>
+                </div>
+                <div class="collapse <?= $pagina_atual == 'setores' || $pagina_atual == 'localidades' || $pagina_atual == 'escolas' || $pagina_atual == 'visitas' || $pagina_atual == 'usuarios' ? 'show' : ''; ?>" id="collapse-menu-cadastro">
+                    <div class="bg-theme-primary p-2">
+                        <a href="setores.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'btn-light' : 'btn-primary'; ?>">Setores</a>
+                        <a href="localidades.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'btn-light' : 'btn-primary'; ?>">Localidades</a>
+                        <a href="escolas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'escolas' ? 'btn-light' : 'btn-primary'; ?>">Escolas</a>
+                        <a href="visitas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'visitas' ? 'btn-light' : 'btn-primary'; ?>">Visitas</a>
 
-            <li><a href="../views/relatorios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>">Relatório</a></li>
+                        <?= $perfil_admin ? '<a href="usuarios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'usuarios' ? 'btn-light' : 'btn-primary') .' ">Usuários</a>' : '' ?>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="mb-1 w-100">
+                    <button class="btn w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-menu-relatorio" aria-expanded="false" aria-controls="collapse-menu-relatorio">
+                        Relatórios
+                    </button>
+                </div>
+                <div class="collapse <?= $pagina_atual == 'relatorio' ? 'show' : ''; ?>" id="collapse-menu-relatorio">
+                    <div class="bg-theme-primary p-2">
+                        <a href="../views/relatorios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>">Relatório</a>
+                    </div>
+                </div>
+            </li>
+
         </ul>
     </div>
 

@@ -5,13 +5,13 @@
     <main class="container-fluid card border-primary">
         <div class="card-body h-screen">
             <article>
+                <h4 class="py-3">Escolas</h4>
                 <table id="tabela-escolas" class="table table-light">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nome da Escola</th>
-                            <th scope="col">Cidade</th>
-                            <th scope="col">Endereço</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Localidade / Setor</th>
                             <th scope="col">Responsável</th>
                             <th scope="col">Ações</th>
                         </tr>
@@ -21,41 +21,29 @@
                     </tbody>
                 </table>
             </article>
-            <article>
+            <article class="mt-5">
                 <div>
-                    <img class="rounded mx-auto d-block" width="180px" height="140px" src="../assets/img/escola.png" alt="">    
-                    <h4 class="py-3 text-center">  Cadastrar Escola</h4>
+                    <!-- <img class="rounded mx-auto d-block" width="180px" height="140px" src="../assets/img/escola.png" alt="">     -->
+                    <h4 class="py-3 text-left">Cadastrar escola</h4>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <form id="form-usuarios">
                             <div class="row p-3">
-                                <div class="col-6">
-                                    <label for="escola-nome" class="form-label fw-bold">Nome da Escola:</label>
-                                    <input type="text" class="form-control" id="escola-nome" name="nome">
+                                <div class="col-12">
+                                    <label for="escola-nome" class="form-label fw-bold">Nome:</label>
+                                    <input type="text" class="form-control w-full" id="escola-nome" name="nome">
                                 </div>
-                                <div class="col-4">
-                                    <label for="escola-endereco" class="form-label fw-bold">Endereço:</label>
-                                    <input type="text" class="form-control" id="escola-endereco" name="endereço">
-                                </div>
-                                <div class="col-2">
-                                    <label for="endereco-numero" class="form-label fw-bold">Número:</label>
-                                    <input type="text" class="form-control" id="endereco-numero" name="numero">
-                                </div>
-                                <div class="col-3">
-                                    <label for="endereco-cidade" class="form-label fw-bold">Cidade:</label>
-                                    <input type="text" class="form-control" id="endereco-cidade" name="cidade">
-                                </div>
-                                <div class="col-3">
-                                    <label for="endereco-bairro" class="form-label fw-bold">Bairro:</label>
-                                    <select class="form-select form-select-lg" id="endereco-bairro" name="bairro">
-                                        <option disabled selected>selecione o Bairro</option>
+                                <div class="col-12">
+                                    <label for="escola-localidade" class="form-label fw-bold">Localidade / Setor:</label>
+                                    <select class="form-select form-select-md" id="escola-localidade" name="id_localidade">
+                                        <option disabled selected>selecione a localidade</option>
                                     </select>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-12">
                                     <label for="escola-responsavel" class="form-label fw-bold">Responsavel:</label>
-                                    <select class="form-select form-select-lg" id="escola-responsavel" name="responsavel">
-                                        <option disabled selected>selecione o Responsável</option>
+                                    <select class="form-select form-select-md" id="escola-responsavel" name="id_responsavel">
+                                        <option disabled selected>selecione o responsável</option>
                                     </select>
                                 </div>
                                 <div class="col-12 pt-5 offset-md-7 col-md-5">
@@ -74,3 +62,7 @@
 ?>
 
 <script src="../assets/js/escolas.js"></script>
+
+<?php 
+    include_once './templates/end-footer.php'; 
+?>
