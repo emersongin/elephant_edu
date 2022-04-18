@@ -115,6 +115,8 @@ async function listarUsuario() {
         });
 
         tabela.innerHTML = linhas;
+    } else {
+        tabela.innerHTML = '<tr>Nenhum usuário foi encontrado.</tr>';
     }
 
 }
