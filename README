@@ -1,46 +1,27 @@
- 
+<div align="center">
+    <img alt="Elephant_Edu" width="300px" src="https://raw.githubusercontent.com/gist/Wedgles97/742024f78f0bb95cf31c5e1e60c087d0/raw/55aa1c91359bfc58acf078a0382f9799255a9f41/githubcard.svg"/>
+</div>
 
+# Sobre
 
+<p align="justify">
+    Elephant_Edu é um sistema desenvolvido para compor a nota da AV1 na disciplina de 
+    <strong>Prática Profissional</strong> do 5º Período de Análise e Desenvolvimento de Sistemas 
+    da Uninassau - Caruaru/PE.
+</p>
 
-#tabelas para criar
+## Construído com
 
-usuarios
-    id << primary >>
-    nome
-    cpf
-    telefone
-    senha
-    id_perfil << FK perfis >>
+- [PHP](https://www.php.net)
+- [Bootstrap](https://getbootstrap.com)
 
-perfis
-    id << primary >>
-    descricao
+## Instalações
 
-setores
-    id << primary >>
-    descricao
+- [VSCODE](https://code.visualstudio.com)
+- [XAMPP](https://www.apachefriends.org/download.html)
 
-localidades
-    id << primary >>
-    descricao
-    id_setores << FK setores >>
+## Instruções
+- `git clone https://github.com/Wedgles97/elephant_edu.git`
+- `Siga as instruções em [elephant_edu/app/config/database/]`
 
-escolas
-    id << primary >>
-    nome
-    id_responsavel << FK usuarios >>
-    id_localidade << FK localidades >>
-
-visitas
-    id << primary >>
-    id_usuario << FK usuarios >>
-    id_setor << FK setores >>
-    id_escola << FK escolas >>
-    qtd_alunos
-    conteudo
-    professor
-    telefone
-    data
-    criado_em
-
-
+## Colaboradores
