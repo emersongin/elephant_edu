@@ -129,10 +129,10 @@ function linhaUsuario(usuario, index) {
             <td class="table-light d-none d-md-table-cell">${usuario.ds_perfil}</td>
             <td class="table-light text-center">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-danger" title="editar usuário" data-bs-toggle="modal" data-bs-target="#modal-usuarios" onclick='editarUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-warning" title="editar usuário" data-bs-toggle="modal" data-bs-target="#modal-usuarios" onclick='editarUsuario(${JSON.stringify(usuario)});'>
                         <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                     </button>
-                    <button type="button" class="btn btn-warning" title="excluir usuário" onclick='excluirUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-danger" title="excluir usuário" onclick='excluirUsuario(${JSON.stringify(usuario)});'>
                         <i class="fa fa-trash text-white" aria-hidden="true"></i>
                     </button>
                 </div>
