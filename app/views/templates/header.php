@@ -78,19 +78,19 @@
         <div class="row">
 
             <!-- mobile - tablete -->
-                <div class="col-12 d-block d-md-none">
+                <div class="col-12 d-block d-lg-none">
                     <?php include_once '../views/components/burguer-menu/burguer-menu.php'; ?>
                 </div>
             <!-- mobile - tablete -->
 
             <!-- desktop -->
-                <div class="col-2 d-none d-md-block vh-100">
+                <div class="col-2 d-none d-lg-block vh-100">
                     <?php include_once '../views/components/side-menu/side-menu.php'; ?>
                 </div>
             <!-- desktop -->
 
             <!-- conteudo -->
-                <div class="col-12 col-md-10">
+                <div class="col-12 col-lg-10">
             <!-- conteudo... -->
 
 

@@ -30,20 +30,18 @@
                     <div class="card-body">
                         <form id="form-usuarios">
                             <div class="row p-3">
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <label for="escola-nome" class="form-label fw-bold">Nome:</label>
                                     <input type="text" class="form-control w-full" id="escola-nome" name="nome">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="escola-responsavel" class="form-label fw-bold">Responsável:</label>
+                                    <input type="text" class="form-control w-full" id="escola-responsavel" name="responsavel">
                                 </div>
                                 <div class="col-12">
                                     <label for="escola-localidade" class="form-label fw-bold">Localidade / Setor:</label>
                                     <select class="form-select form-select-md" id="escola-localidade" name="id_localidade">
                                         <option disabled selected>selecione a localidade</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <label for="escola-responsavel" class="form-label fw-bold">Responsavel:</label>
-                                    <select class="form-select form-select-md" id="escola-responsavel" name="id_responsavel">
-                                        <option disabled selected>selecione o responsável</option>
                                     </select>
                                 </div>
                                 <div class="col-12 pt-5 offset-md-7 col-md-5">
