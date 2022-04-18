@@ -12,31 +12,38 @@
         switch ($pagina_atual) {
             case 'inicio':
                 $titulo = 'Início';
+                $menu_ativo = 'none';
 
                 break;
             case 'usuarios':
                 if(!$perfil_admin) header('Location:inicio.php');
                 $titulo = 'Usuários';
+                $menu_ativo = 'cadastro';
 
                 break;
             case 'escolas':
                 $titulo = 'Escolas';
+                $menu_ativo = 'cadastro';
 
                 break;
             case 'setores':
                 $titulo = 'Setores';
+                $menu_ativo = 'cadastro';
 
                 break;
             case 'localidades':
                 $titulo = 'Localidades';
+                $menu_ativo = 'cadastro';
 
                 break;
             case 'visitas':
                 $titulo = 'Visitas';
+                $menu_ativo = 'cadastro';
 
                 break;
             case 'relatorios':
                 $titulo = 'Relatórios';
+                $menu_ativo = 'relatorio';
 
                 break;
         }

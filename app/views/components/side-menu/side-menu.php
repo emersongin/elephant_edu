@@ -13,12 +13,12 @@
             <li>
                 <div class="mb-1 w-100">
                     <button 
-                        class="btn w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'setores' || $pagina_atual == 'localidades' || $pagina_atual == 'escolas' || $pagina_atual == 'visitas' || $pagina_atual == 'usuarios' ? 'btn-light' : 'btn-primary'; ?>" 
+                        class="btn w-100 text-uppercase font-weight-bold <?= $menu_ativo === 'cadastro' ? 'btn-light' : 'btn-primary'; ?>" 
                         type="button" data-bs-toggle="collapse" data-bs-target="#collapse-menu-cadastro" aria-expanded="false" aria-controls="collapse-menu-cadastro">
                         Cadastros
                     </button>
                 </div>
-                <div class="collapse <?= $pagina_atual == 'setores' || $pagina_atual == 'localidades' || $pagina_atual == 'escolas' || $pagina_atual == 'visitas' || $pagina_atual == 'usuarios' ? 'show' : ''; ?>" id="collapse-menu-cadastro">
+                <div class="collapse <?= $menu_ativo === 'cadastro' ? 'show' : ''; ?>" id="collapse-menu-cadastro">
                     <div class="bg-theme-primary p-2">
                         <a href="setores.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'btn-light' : 'btn-primary'; ?>">Setores</a>
                         <a href="localidades.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'btn-light' : 'btn-primary'; ?>">Localidades</a>
@@ -32,11 +32,11 @@
 
             <li>
                 <div class="mb-1 w-100">
-                    <button class="btn w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-menu-relatorio" aria-expanded="false" aria-controls="collapse-menu-relatorio">
+                    <button class="btn w-100 text-uppercase font-weight-bold <?= $menu_ativo === 'relatorio' ? 'btn-light' : 'btn-primary'; ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-menu-relatorio" aria-expanded="false" aria-controls="collapse-menu-relatorio">
                         Relatórios
                     </button>
                 </div>
-                <div class="collapse <?= $pagina_atual == 'relatorio' ? 'show' : ''; ?>" id="collapse-menu-relatorio">
+                <div class="collapse <?= $menu_ativo === 'relatorio' ? 'show' : ''; ?>" id="collapse-menu-relatorio">
                     <div class="bg-theme-primary p-2">
                         <a href="../views/relatorios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>">Relatório</a>
                     </div>
