@@ -10,8 +10,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome da Escola</th>
-                            <th scope="col">Endereço</th>
                             <th scope="col">Cidade</th>
+                            <th scope="col">Endereço</th>
                             <th scope="col">Responsável</th>
                             <th scope="col">Ações</th>
                         </tr>
@@ -22,7 +22,10 @@
                 </table>
             </article>
             <article>
-                <h4 class="py-3">Cadastrar Escola</h4>
+                <div>
+                    <img class="rounded mx-auto d-block" width="180px" height="140px" src="../assets/img/escola.png" alt="">    
+                    <h4 class="py-3 text-center">  Cadastrar Escola</h4>
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <form id="form-usuarios">
@@ -51,7 +54,9 @@
                                 </div>
                                 <div class="col-3">
                                     <label for="escola-responsavel" class="form-label fw-bold">Responsavel:</label>
-                                    <input type="text" class="form-control" id="escola-responsavel" name="responsavel">
+                                    <select class="form-select form-select-lg" id="escola-responsavel" name="responsavel">
+                                        <option disabled selected>selecione o Responsável</option>
+                                    </select>
                                 </div>
                                 <div class="col-12 pt-5 offset-md-7 col-md-5">
                                     <button type="button" class="btn btn-primary w-100">Cadastrar</button>
