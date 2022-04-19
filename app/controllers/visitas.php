@@ -24,27 +24,27 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_usuario = isset($_POST['id_usuario']) ? parseID($_POST['id_usuario']) : false;
-    $id_setor = isset($_POST['id_setor']) ? parseID($_POST['id_setor']) : false;
+
+    $id_usuario = isset($auth_user_id) ? parseID($auth_user_id) : false;
+
     $id_escola = isset($_POST['id_escola']) ? parseID($_POST['id_escola']) : false;
-    $qtd_alunos = isset($_POST['qtd_alunos']) ? parseID($_POST['qtd_alunos']) : false;
-    $conteudo = isset($_POST['conteudo']) ? parseTexto($_POST['conteudo']) : false;
+    $id_setor = isset($_POST['id_setor']) ? parseID($_POST['id_setor']) : false;
+    $qtd_alunos = isset($_POST['qtdAlunos']) ? parseNumber($_POST['qtdAlunos']) : false;
     $professor = isset($_POST['professor']) ? parseTexto($_POST['professor']) : false;
     $telefone = isset($_POST['telefone']) ? parseTexto($_POST['telefone']) : false;
     $data = isset($_POST['data']) ? parseTexto($_POST['data']) : false;
-    $criado_em = isset($_POST['criado_em']) ? parseTexto($_POST['criado_em']) : false;
+    $conteudo = isset($_POST['conteudo']) ? parseTexto($_POST['conteudo']) : false;
 
-    $valido = $id_usuario && $id_setor && $id_escola && $qtd_alunos && $conteudo && $professor && $telefone && $data && $criado_em;
+    $valido = $id_usuario && $id_setor && $id_escola && $qtd_alunos && $conteudo && $professor && $telefone && $data;
     $params = array(
         'id_usuario'  => $id_usuario,
-        'id_setor'    => $id_setor,
         'id_escola'   => $id_escola,
+        'id_setor'    => $id_setor,
         'qtd_alunos'  => $qtd_alunos,
-        'conteudo'    => $conteudo,
         'professor'   => $professor,
         'telefone'    => $telefone,
-        'data'        => $data,
-        'criado_em'   => $criado_em
+        'data_visita' => $data,
+        'conteudo'    => $conteudo
     );
 
     echo $valido ? visitasInserir($params) : falha('parametros inválido!');
@@ -53,31 +53,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $id = isset($_GET['id']) ? parseId($_GET['id']) : false;
-    $id_usuario = isset($_POST['id_usuario']) ? parseID($_POST['id_usuario']) : false;
-    $id_setor = isset($_POST['id_setor']) ? parseID($_POST['id_setor']) : false;
-    $id_escola = isset($_POST['id_escola']) ? parseID($_POST['id_escola']) : false;
-    $qtd_alunos = isset($_POST['qtd_alunos']) ? parseID($_POST['qtd_alunos']) : false;
-    $conteudo = isset($_POST['conteudo']) ? parseTexto($_POST['conteudo']) : false;
-    $professor = isset($_POST['professor']) ? parseTexto($_POST['professor']) : false;
-    $telefone = isset($_POST['telefone']) ? parseTexto($_POST['telefone']) : false;
-    $data = isset($_POST['data']) ? parseTexto($_POST['data']) : false;
-    $criado_em = isset($_POST['criado_em']) ? parseTexto($_POST['criado_em']) : false;
 
-    $valido = $id && $id_usuario && $id_setor && $id_escola && $qtd_alunos && $conteudo && $professor && $telefone && $data && $criado_em;
+    $id_setor = isset($_PUT['id_setor']) ? parseID($_PUT['id_setor']) : false;
+    $qtd_alunos = isset($_PUT['qtdAlunos']) ? parseNumber($_PUT['qtdAlunos']) : false;
+    $professor = isset($_PUT['professor']) ? parseTexto($_PUT['professor']) : false;
+    $telefone = isset($_PUT['telefone']) ? parseTexto($_PUT['telefone']) : false;
+    $data = isset($_PUT['data']) ? parseTexto($_PUT['data']) : false;
+    $conteudo = isset($_PUT['conteudo']) ? parseTexto($_PUT['conteudo']) : false;
+
+    $valido = $id && $id_setor && $qtd_alunos && $conteudo && $professor && $telefone && $data;
     $params = array(
         'id'          => $id,
-        'id_usuario'  => $id_usuario,
         'id_setor'    => $id_setor,
-        'id_escola'   => $id_escola,
         'qtd_alunos'  => $qtd_alunos,
-        'conteudo'    => $conteudo,
         'professor'   => $professor,
         'telefone'    => $telefone,
-        'data'        => $data,
-        'criado_em'   => $criado_em
+        'data_visita' => $data,
+        'conteudo'    => $conteudo
     );
 
-    echo $valido ? visitasInserir($params) : falha('parametros inválido!');
+    echo $valido ? visitasAtualizar($params) : falha('parametros inválido!');
     exit;
 }
 

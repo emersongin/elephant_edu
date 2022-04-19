@@ -11,7 +11,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Data</th>
                             <th scope="col">Nome da Escola</th>
-                            <th scope="col">Localidade / Setor</th>
+                            <th scope="col">Setor</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -38,24 +38,24 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label for="escola-qtd-alunos" class="form-label fw-bold">Número de alunos</label>
-                                <input type="number" min="0" max="99999" class="form-control" id="escola-qtd-alunos" name="qtd-alunos" required>
+                                <label for="visita-qtd-alunos" class="form-label fw-bold">Número de alunos</label>
+                                <input type="number" min="0" max="99999" class="form-control" id="visita-qtd-alunos" name="qtd-alunos" required>
                             </div>
                             <div class="col-12">
-                                <label for="escola-nome-professor" class="form-label fw-bold">Nome professor</label>
-                                <input type="text" class="form-control" id="escola-nome-professor" name="nome-professor" required>
+                                <label for="visita-nome-professor" class="form-label fw-bold">Nome professor</label>
+                                <input type="text" class="form-control" id="visita-nome-professor" name="nome-professor" required>
                             </div>
                             <div class="col-12">
-                                <label for="escola-telefone" class="form-label fw-bold">Telefone para contato</label>
-                                <input type="text" class="form-control" id="escola-telefone" name="telefone" required>
+                                <label for="visita-telefone" class="form-label fw-bold">Telefone para contato</label>
+                                <input type="text" class="form-control" id="visita-telefone" name="telefone" required>
                             </div>
                             <div class="col-12">
-                                <label for="escola-data" class="form-label fw-bold">Data de visita</label>
-                                <input type="date" class="form-control" id="escola-data" name="data" required>
+                                <label for="visita-data-cadastro" class="form-label fw-bold">Data de visita</label>
+                                <input type="date" class="form-control" id="visita-data-cadastro" name="data" required>
                             </div>
                             <div class="col-12">
                                 <label for="conteudo" class="form-label fw-bold">Resumo de visita</label>
-                                <textarea class="form-control" name="conteudo" rows="7"></textarea>
+                                <textarea class="form-control" id="visita-conteudo" name="conteudo" rows="7"></textarea>
                             </div>
                             <div class="col-12 pt-5 offset-md-7 col-md-5">
                                 <input id="btn-cadastro" type="submit" value="Cadastrar" class="btn btn-primary w-100">
@@ -76,29 +76,29 @@
                             <div class="modal-body">
                                 <div class="col-12">
                                     <label for="visita-setor" class="form-label fw-bold">Setor</label>
-                                    <select class="form-select form-select-md visita-setor" id="visita-setor" form="form-editar-visita" name="id_setor" required>
+                                    <select class="form-select form-select-md visita-setor" id="visita-setor-editar" form="form-editar-visita" name="id_setor" required>
                                         <option disabled selected>selecione o setor</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label for="escola-qtd-alunos" class="form-label fw-bold">Número de alunos</label>
-                                    <input type="number" min="0" max="99999" class="form-control" id="escola-qtd-alunos" name="qtd-alunos" required>
+                                    <label for="visita-qtd-alunos" class="form-label fw-bold">Número de alunos</label>
+                                    <input type="number" min="0" max="99999" class="form-control" id="visita-qtd-alunos" name="qtd-alunos" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="escola-nome-professor" class="form-label fw-bold">Nome professor</label>
-                                    <input type="text" class="form-control" id="escola-nome-professor" name="nome-professor" required>
+                                    <label for="visita-nome-professor" class="form-label fw-bold">Nome professor</label>
+                                    <input type="text" class="form-control" id="visita-nome-professor" name="nome-professor" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="escola-telefone" class="form-label fw-bold">Telefone para contato</label>
-                                    <input type="text" class="form-control" id="escola-telefone" name="telefone" required>
+                                    <label for="visita-telefone" class="form-label fw-bold">Telefone para contato</label>
+                                    <input type="text" class="form-control" id="visita-telefone" name="telefone" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="escola-data" class="form-label fw-bold">Data de visita</label>
-                                    <input type="date" class="form-control" id="escola-data" name="data" required>
+                                    <label for="visita-data" class="form-label fw-bold">Data de visita</label>
+                                    <input type="date" class="form-control" id="visita-data" name="data" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="conteudo" class="form-label fw-bold">Resumo de visita</label>
-                                    <textarea class="form-control" name="conteudo" rows="7"></textarea>
+                                    <textarea class="form-control" id="visita-conteudo" name="conteudo" rows="7"></textarea>
                                 </div>
                                 <input type="hidden" id="visita-id" name="id">
                             </div>

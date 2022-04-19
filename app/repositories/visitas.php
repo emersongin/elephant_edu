@@ -11,29 +11,25 @@ function visitasTodas() {
 		$sql = 
 			"SELECT 
 				v.id, 
+				v.qtd_alunos,
 				v.conteudo, 
 				v.professor, 
 				v.telefone,
-				v.data_visita, 
+				v.data_visita,
+				DATE_FORMAT(v.data_visita, '%d/%m/%Y') as data_visita_formatada, 
 				v.criado_em,
 				u.nome as nm_usuario,
 				u.cpf as cpf_usuario,
 				u.telefone as telefone_usuario,
+				v.id_setor,
 				s.descricao as ds_setor_visita,
 				e.nome as nm_escola,
-				u2.nome as nm_responsavel,
-				u2.cpf as cpf_responsavel,
-				u2.telefone as cpf_responsavel,
-				l.descricao as ds_localidade_escola,
-				s2.descricao as ds_setor_escola 
+				e.responsavel as nm_responsavel
 			FROM 
 				visitas v
 			JOIN usuarios u ON u.id = v.id_usuario
 			JOIN setores s ON s.id = v.id_setor
-			JOIN escolas e ON e.id = v.id_escola
-			JOIN usuarios u2 ON u2.id = e.id_responsavel
-			JOIN localidades l ON l.id = e.id_localidade
-			JOIN setores s2 ON s2.id = l.id_setor";
+			JOIN escolas e ON e.id = v.id_escola";
 
 		$consulta = $conexao->prepare($sql);
 		$consulta->execute();
@@ -60,29 +56,25 @@ function visitasID($params) {
 		$sql = 
 			"SELECT 
 				v.id, 
+				v.qtd_alunos,
 				v.conteudo, 
 				v.professor, 
 				v.telefone,
-				v.data_visita, 
+				v.data_visita,
+				DATE_FORMAT(v.data_visita, '%d/%m/%Y') as data_visita, 
 				v.criado_em,
 				u.nome as nm_usuario,
 				u.cpf as cpf_usuario,
 				u.telefone as telefone_usuario,
+				v.id_setor,
 				s.descricao as ds_setor_visita,
 				e.nome as nm_escola,
-				u2.nome as nm_responsavel,
-				u2.cpf as cpf_responsavel,
-				u2.telefone as cpf_responsavel,
-				l.descricao as ds_localidade_escola,
-				s2.descricao as ds_setor_escola 
+				e.responsavel as nm_responsavel
 			FROM 
 				visitas v
 			JOIN usuarios u ON u.id = v.id_usuario
 			JOIN setores s ON s.id = v.id_setor
 			JOIN escolas e ON e.id = v.id_escola
-			JOIN usuarios u2 ON u2.id = e.id_responsavel
-			JOIN localidades l ON l.id = e.id_localidade
-			JOIN setores s2 ON s2.id = l.id_setor
 			WHERE
 				v.id = :id";
 
@@ -111,18 +103,24 @@ function visitasInserir($params) {
         $sql = 
             "INSERT INTO visitas
             (
-                conteudo,
+				id_usuario,
+				id_escola,
+				id_setor,
+				qtd_alunos,
                 professor,
                 telefone,
                 data_visita,
-                criado_em
+				conteudo				
             ) VALUES 
             (
-                :conteudo,
+				:id_usuario,
+                :id_escola,
+				:id_setor,
+				:qtd_alunos,
                 :professor,
                 :telefone,
                 :data_visita,
-                :criado_em
+				:conteudo	
             )";
 
         $consulta = $conexao->prepare($sql);
@@ -151,11 +149,12 @@ function visitasAtualizar($params) {
             "UPDATE 
                 visitas
             SET
-                conteudo = :conteudo,
+				id_setor = :id_setor,
+				qtd_alunos = :qtd_alunos,
 				professor = :professor,
 				telefone = :telefone,
 				data_visita = :data_visita,
-				criado_em = :criado_em
+                conteudo = :conteudo
             WHERE
                 id = :id";
 
