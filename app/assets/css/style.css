@@ -1,6 +1,13 @@
+* {
+
+}
+
 body {
     background-image: url("../img/background-main.jpg");
-    background-size: auto;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 .text-theme-primary {

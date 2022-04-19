@@ -9,12 +9,9 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Data</th>
                             <th scope="col">Nome da Escola</th>
-                            <th scope="col">Setor</th>
-                            <th scope="col">Quantidade de Alunos</th>
-                            <th scope="col">Professor</th>
-                            <th scope="col">Responsável pela Visita</th>
-                            <th scope="col">Criado_em</th>
+                            <th scope="col">Localidade / Setor</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -29,36 +26,89 @@
                     <div class="card-body">
                         <form id="form-cadastro-visita" class="row p-3">
                             <div class="col-12">
-                                <label for="escola-nome" class="form-label fw-bold">Nome da Escola</label>
-                                <input type="text" class="form-control" id="escola-nome" name="nome" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="professor-nome" class="form-label fw-bold">Nome do Professor</label>
-                                <input type="text" class="form-control" id="professor-nome" name="n_professor" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="professor-telefone" class="form-label fw-bold">Telefone do Professor</label>
-                                <input type="text" class="form-control" id="professor-telefone" name="telefone" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="qtd-alunos" class="form-label fw-bold">Quantidade de Alunos</label>
-                                <input type="text" class="form-control" id="qtd-alunos" name="qtd_alunos" required>
+                                <label for="escola-visita" class="form-label fw-bold">Escola</label>
+                                <select class="form-select form-select-md escola-visita" id="escola-visita" form="form-cadastro-visita" name="id_escola" required>
+                                    <option disabled selected>selecione a escola</option>
+                                </select>
                             </div>
                             <div class="col-12">
                                 <label for="setor-visita" class="form-label fw-bold">Setor</label>
                                 <select class="form-select form-select-md setor-visita" id="setor-visita" form="form-cadastro-visita" name="id_setor" required>
-                                    <option disabled selected>selecione um Setor</option>
+                                    <option disabled selected>selecione o setor</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label style="margin-top: 5px" for="conteudo" class="form-label fw-bold">Relátorio da visita</label>
-                                <textarea class="form-control" id="conteudo" rows="7"></textarea>
+                                <label for="escola-qtd-alunos" class="form-label fw-bold">Número de alunos</label>
+                                <input type="number" min="0" max="99999" class="form-control" id="escola-qtd-alunos" name="qtd-alunos" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="escola-nome-professor" class="form-label fw-bold">Nome professor</label>
+                                <input type="text" class="form-control" id="escola-nome-professor" name="nome-professor" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="escola-telefone" class="form-label fw-bold">Telefone para contato</label>
+                                <input type="text" class="form-control" id="escola-telefone" name="telefone" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="escola-data" class="form-label fw-bold">Data de visita</label>
+                                <input type="date" class="form-control" id="escola-data" name="data" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="conteudo" class="form-label fw-bold">Resumo de visita</label>
+                                <textarea class="form-control" name="conteudo" rows="7"></textarea>
                             </div>
                             <div class="col-12 pt-5 offset-md-7 col-md-5">
                                 <input id="btn-cadastro" type="submit" value="Cadastrar" class="btn btn-primary w-100">
                             </div>
                         </form>
                     </div>
+                </div>
+            </article>
+            <article><!-- Modal -->
+                <div class="modal fade" id="modal-escolas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editando escola</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="form-editar-visita" class="row p-3">
+                            <div class="modal-body">
+                                <div class="col-12">
+                                    <label for="setor-visita" class="form-label fw-bold">Setor</label>
+                                    <select class="form-select form-select-md setor-visita" id="setor-visita" form="form-editar-visita" name="id_setor" required>
+                                        <option disabled selected>selecione o setor</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="escola-qtd-alunos" class="form-label fw-bold">Número de alunos</label>
+                                    <input type="number" min="0" max="99999" class="form-control" id="escola-qtd-alunos" name="qtd-alunos" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="escola-nome-professor" class="form-label fw-bold">Nome professor</label>
+                                    <input type="text" class="form-control" id="escola-nome-professor" name="nome-professor" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="escola-telefone" class="form-label fw-bold">Telefone para contato</label>
+                                    <input type="text" class="form-control" id="escola-telefone" name="telefone" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="escola-data" class="form-label fw-bold">Data de visita</label>
+                                    <input type="date" class="form-control" id="escola-data" name="data" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="conteudo" class="form-label fw-bold">Resumo de visita</label>
+                                    <textarea class="form-control" name="conteudo" rows="7"></textarea>
+                                </div>
+                                <input type="hidden" id="visita-id" name="id">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <input id="btn-atualizar" type="submit" value="Atualizar" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 </div>
             </article>
         </div>

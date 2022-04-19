@@ -23,24 +23,23 @@
             </article>
             <article class="mt-5">
                 <div>
-                    <!-- <img class="rounded mx-auto d-block" width="180px" height="140px" src="../assets/img/escola.png" alt="">     -->
                     <h4 class="py-3 text-left">Cadastrar escola</h4>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form id="form-usuarios">
+                        <form id="form-cadastro-escola">
                             <div class="row p-3">
                                 <div class="col-12 col-md-6">
                                     <label for="escola-nome" class="form-label fw-bold">Nome:</label>
-                                    <input type="text" class="form-control w-full" id="escola-nome" name="nome">
+                                    <input type="text" class="form-control w-full" id="escola-nome" name="nome" required>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="escola-responsavel" class="form-label fw-bold">Responsável:</label>
-                                    <input type="text" class="form-control w-full" id="escola-responsavel" name="responsavel">
+                                    <input type="text" class="form-control w-full" id="escola-responsavel" name="responsavel" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="escola-localidade" class="form-label fw-bold">Localidade / Setor:</label>
-                                    <select class="form-select form-select-md" id="escola-localidade" name="id_localidade">
+                                    <select class="form-select form-select-md" id="escola-localidade" form="form-cadastro-escola" name="id_localidade" required>
                                         <option disabled selected>selecione a localidade</option>
                                     </select>
                                 </div>
@@ -50,6 +49,41 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </article>
+            <article><!-- Modal -->
+                <div class="modal fade" id="modal-escolas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editando escola</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="form-editar-escola" class="row p-3">
+                            <div class="modal-body">
+                                <div class="col-12 col-md-6">
+                                    <label for="escola-nome" class="form-label fw-bold">Nome:</label>
+                                    <input type="text" class="form-control w-full" id="escola-nome" name="nome" required>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="escola-responsavel" class="form-label fw-bold">Responsável:</label>
+                                    <input type="text" class="form-control w-full" id="escola-responsavel" name="responsavel" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="escola-localidade-editar" class="form-label fw-bold">Localidade / Setor:</label>
+                                    <select class="form-select form-select-md" id="escola-localidade-editar" form="form-editar-escola" name="id_localidade" required>
+                                        <option disabled selected>selecione a localidade e setor</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" id="escola-id" name="id">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <input id="btn-atualizar" type="submit" value="Atualizar" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 </div>
             </article>
         </div>

@@ -25,7 +25,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form id="form-usuarios">
+                        <form id="form-cadastro-setor">
                             <div class="row p-3">
                                 <div class="col-12">
                                     <label for="setor-descricao" class="form-label fw-bold">Descrição:</label>
@@ -37,6 +37,31 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </article>
+            <article><!-- Modal -->
+                <div class="modal fade" id="modal-escolas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editando escola</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="form-editar-setor" class="row p-3">
+                            <div class="modal-body">
+                                <div class="col-12">
+                                    <label for="setor-descricao" class="form-label fw-bold">Descrição:</label>
+                                    <input type="text" class="form-control w-full" id="setor-descricao" name="descricao">
+                                </div>
+                                <input type="hidden" id="setor-id" name="id">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <input id="btn-atualizar" type="submit" value="Atualizar" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 </div>
             </article>
         </div>

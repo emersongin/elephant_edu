@@ -26,7 +26,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form id="form-usuarios">
+                        <form id="form-cadastro-localidade">
                             <div class="row p-3">
                                 <div class="col-12">
                                     <label for="localidade-descricao" class="form-label fw-bold">Descrição:</label>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="localidade-setor" class="form-label fw-bold">Setor:</label>
-                                    <select class="form-select form-select-md" id="localidade-setor" name="id_setor">
+                                    <select class="form-select form-select-md" id="localidade-setor" form="form-cadastro-localidade" name="id_setor">
                                         <option disabled selected>selecione o setor</option>
                                     </select>
                                 </div>
@@ -44,6 +44,37 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </article>
+            <article><!-- Modal -->
+                <div class="modal fade" id="modal-escolas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editando escola</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="form-editar-localidade" class="row p-3">
+                            <div class="modal-body">
+                                <div class="col-12">
+                                    <label for="localidade-descricao" class="form-label fw-bold">Descrição:</label>
+                                    <input type="text" class="form-control w-full" id="localidade-descricao" name="descricao">
+                                </div>
+                                <div class="col-12">
+                                    <label for="localidade-setor" class="form-label fw-bold">Setor:</label>
+                                    <select class="form-select form-select-md" id="localidade-setor" form="form-editar-localidade" name="id_setor">
+                                        <option disabled selected>selecione o setor</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" id="localidade-id" name="id">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <input id="btn-atualizar" type="submit" value="Atualizar" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 </div>
             </article>
         </div>
