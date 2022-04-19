@@ -1,13 +1,12 @@
 window.onload = () => {
-    listarUsuario();
-    listarPerfis();
+    listarSetores();
     submitFormCadastro();
     submitFormAtualizar();
 
 }
 
 function submitFormCadastro() {
-    const form = document.getElementById('form-cadastro-usuario');
+    const form = document.getElementById('form-cadastro-setor');
     const button = document.getElementById('btn-cadastro');
 
     form.addEventListener("submit", async function (e) {
@@ -15,19 +14,15 @@ function submitFormCadastro() {
 
         const formData = new FormData(form);
         const cadastro = {
-            nome: formData.get('nome'),
-            cpf: formData.get('cpf'),
-            telefone: formData.get('telefone'),
-            senha: formData.get('senha'),
-            id_perfil: formData.get('id_perfil')
+            descricao: formData.get('descricao')
         };
 
         button.disabled = true;
 
-        const usuario = await fetchCadastrarUsuario(cadastro);
+        const setor = await fetchCadastrarSetor(cadastro);
 
-        if(usuario) {
-            listarUsuario();
+        if(setor) {
+            listarSetores();
             form.reset();
 
         }
@@ -38,9 +33,9 @@ function submitFormCadastro() {
 }
 
 function submitFormAtualizar() {
-    const form = document.getElementById('form-editar-usuario');
+    const form = document.getElementById('form-editar-setor');
     const button = document.getElementById('btn-atualizar');
-    const modal = new bootstrap.Modal(document.getElementById('modal-usuarios'));
+    const modal = new bootstrap.Modal(document.getElementById('modal-setores'));
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -48,20 +43,17 @@ function submitFormAtualizar() {
         const formData = new FormData(form);
         const atualizacao = {
             id: formData.get('id'),
-            nome: formData.get('nome'),
-            cpf: formData.get('cpf'),
-            telefone: formData.get('telefone'),
-            id_perfil: formData.get('id_perfil')
+            descricao: formData.get('descricao'),
         };
 
         button.disabled = true;
 
-        const usuario = await fetchAtualizarUsuario(atualizacao);
+        const setor = await fetchAtualizarSetor(atualizacao);
 
-        if(usuario) {
+        if(setor) {
             form.reset();
             modal.hide();
-            listarUsuario();
+            listarSetores();
 
         }
 
@@ -70,71 +62,62 @@ function submitFormAtualizar() {
     });
 }
 
-async function excluirUsuario(usuario) {
-    if(confirm(`Deseja realmente excluir o usuário: ${usuario.nome}`)) {
-        const excluido = await fetchExcluirUsuario(usuario.id);
+async function excluirSetor(setor) {
+    if(confirm(`Deseja realmente excluir o setor: ${setor.ds_setor}`)) {
+        const excluido = await fetchExcluirSetor(setor.id);
 
         if(excluido) { 
-            listarUsuario(); 
+            listarSetores(); 
         }
 
     }
 }
 
-function editarUsuario(usuario) {
-    const form = document.getElementById('form-editar-usuario');
+function editarSetor(setor) {
+    const form = document.getElementById('form-editar-setor');
 
     form.reset();
 
-    const inputID = document.querySelector('#form-editar-usuario #usuario-id');
-    const inputNome = document.querySelector('#form-editar-usuario #usuario-nome');
-    const inputCPF = document.querySelector('#form-editar-usuario #usuario-cpf');
-    const inputTelefone = document.querySelector('#form-editar-usuario #usuario-telefone');
-    const selectPerfil = document.querySelector('#form-editar-usuario #usuario-perfil-editar');
+    const inputID = document.querySelector('#form-editar-setor #setor-id');
+    const inputDescricao = document.querySelector('#form-editar-setor #setor-descricao');
 
-    inputID.value = usuario.id;
-    inputNome.value = usuario.nome;
-    inputCPF.value = usuario.cpf;
-    inputTelefone.value = usuario.telefone;
-    selectPerfil.value = usuario.id_perfil;
+    inputID.value = setor.id;
+    inputDescricao.value = setor.ds_setor;
 
 }
 
-async function listarUsuario() {
-    const tabela = document.getElementById('tabela-usuarios-body');
+async function listarSetores() {
+    const tabela = document.getElementById('tabela-setores-body');
 
     tabela.innerHTML = spinner();
 
-    const usuarios  = await fetchUsuarios();
+    const setores  = await fetchSetores();
 
-    if(usuarios && usuarios.length) {
+    if(setores && setores.length) {
         let linhas = '';
 
-        usuarios.forEach((usuario, index) => {
-            linhas += linhaUsuario(usuario, index + 1);
+        setores.forEach((setor, index) => {
+            linhas += linhaSetor(setor, index + 1);
         });
 
         tabela.innerHTML = linhas;
     } else {
-        tabela.innerHTML = '<tr>Nenhum usuário foi encontrado.</tr>';
+        tabela.innerHTML = '<tr><p class="mt-2">Nenhum setor foi encontrado.</p></tr>';
     }
 
 }
 
-function linhaUsuario(usuario, index) {
+function linhaSetor(setor, index) {
     return `
         <tr>
             <th class="table-light" scope="row">${index}</th>
-            <td class="table-light">${usuario.nome}</td>
-            <td class="table-light">${usuario.cpf}</td>
-            <td class="table-light d-none d-md-table-cell">${usuario.telefone}</td>
-            <td class="table-light d-none d-md-table-cell">${usuario.ds_perfil}</td>
+            <td class="table-light">${setor.ds_setor}</td>
             <td class="table-light text-center">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-warning" title="editar usuário" data-bs-toggle="modal" data-bs-target="#modal-usuarios" onclick='editarUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-warning" title="editar setor" data-bs-toggle="modal" data-bs-target="#modal-setores" onclick='editarSetor(${JSON.stringify(setor)});'>
                         <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                     </button>
-                    <button type="button" class="btn btn-danger" title="excluir usuário" onclick='excluirUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-danger" title="excluir setor" onclick='excluirSetor(${JSON.stringify(setor)});'>
                         <i class="fa fa-trash text-white" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -143,52 +126,23 @@ function linhaUsuario(usuario, index) {
     `;
 }
 
-async function listarPerfis() {
-    const selects = document.getElementsByClassName('usuario-perfil');
-
-    for (const select of selects) {
-        select.disabled = true;
-    }
-
-    let opcoes = '<option disabled selected>selecione um perfil</option>';
-
-    const perfis  = await fetchPerfis();
-
-    if(perfis && perfis.length) {
-
-        perfis.forEach((perfil, index) => {
-            opcoes += `<option value="${perfil.id}">${perfil.descricao}</option>`;
-        });
-
-        for (const select of selects) {
-            select.innerHTML = opcoes;
-        }
-        
-    }
-
-    for (const select of selects) {
-        select.disabled = false;
-    }
-
-}
-
-function fetchUsuarios() {
+function fetchSetores() {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { method: 'GET' });
-            const usuarios = await response.json();
+            const response = await fetch(server + 'setores.php', { method: 'GET' });
+            const setores = await response.json();
 
-            res(usuarios);
+            res(setores);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchCadastrarUsuario(cadastro) {
+function fetchCadastrarSetor(cadastro) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { 
+            const response = await fetch(server + 'setores.php', { 
                 method: "POST",
                 mode: "same-origin",
                 credentials: "same-origin",
@@ -197,19 +151,19 @@ function fetchCadastrarUsuario(cadastro) {
                 },
                 body: JSON.stringify(cadastro)
             });
-            const usuario = await response.json();
+            const setor = await response.json();
 
-            res(usuario);
+            res(setor);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchAtualizarUsuario(atualizacao) {
+function fetchAtualizarSetor(atualizacao) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php?' + new URLSearchParams({
+            const response = await fetch(server + 'setores.php?' + new URLSearchParams({
                 id: atualizacao.id
             }), { 
                 method: "PUT",
@@ -220,19 +174,19 @@ function fetchAtualizarUsuario(atualizacao) {
                 },
                 body: JSON.stringify(atualizacao)
             });
-            const usuario = await response.json();
+            const setor = await response.json();
 
-            res(usuario);
+            res(setor);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchExcluirUsuario(id) {
+function fetchExcluirSetor(id) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { 
+            const response = await fetch(server + 'setores.php', { 
                 method: "DELETE",
                 mode: "same-origin",
                 credentials: "same-origin",
@@ -241,25 +195,12 @@ function fetchExcluirUsuario(id) {
                 },
                 body: JSON.stringify({ id })
             });
-            const usuario = await response.json();
+            const setor = await response.json();
 
-            res(usuario);
+            res(setor);
         } catch (error) {
             rej(false);
             
-        }
-    });
-}
-
-function fetchPerfis(url, params) {
-    return new Promise(async (res, rej) => {
-        try {
-            const response = await fetch(server + 'perfis.php', { method: 'GET' });
-            const perfis = await response.json();
-
-            res(perfis);
-        } catch (error) {
-            rej(false);
         }
     });
 }

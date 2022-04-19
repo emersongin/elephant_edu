@@ -68,7 +68,7 @@ function submitFormAtualizar() {
 }
 
 async function excluirEscola(escola) {
-    if(confirm(`Deseja realmente excluir a escola: ${escola.nome}`)) {
+    if(confirm(`Deseja realmente excluir a escola: ${escola.nm_escola}`)) {
         const excluido = await fetchExcluirEscola(escola.id);
 
         if(excluido) { 
