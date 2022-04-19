@@ -81,7 +81,7 @@ function localidadesInserir($params) {
                 id_setor
             ) VALUES 
             (
-                :descricao,
+                upper(:descricao),
                 :id_setor
             )";
 
@@ -111,7 +111,7 @@ function localidadesAtualizar($params) {
             "UPDATE 
                 localidades
             SET
-                descricao = :descricao,
+                descricao = upper(:descricao),
                 id_setor = :id_setor
             WHERE
                 id = :id";

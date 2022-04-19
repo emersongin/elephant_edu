@@ -117,10 +117,10 @@ function visitasInserir($params) {
                 :id_escola,
 				:id_setor,
 				:qtd_alunos,
-                :professor,
+                upper(:professor),
                 :telefone,
                 :data_visita,
-				:conteudo	
+				:conteudo
             )";
 
         $consulta = $conexao->prepare($sql);
@@ -151,7 +151,7 @@ function visitasAtualizar($params) {
             SET
 				id_setor = :id_setor,
 				qtd_alunos = :qtd_alunos,
-				professor = :professor,
+				professor = upper(:professor),
 				telefone = :telefone,
 				data_visita = :data_visita,
                 conteudo = :conteudo

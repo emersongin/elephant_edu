@@ -10,10 +10,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$senha = isset($_POST['senha']) ? parseTexto($_POST['senha']) : false;
 
     $valido = $nome && $senha;
-    $params = array(
+    $params = [
         'nome'  => $nome,
         'senha' => $senha
-    );
+	];
 
     $usuario = autenticacaoUsuario($params);
 

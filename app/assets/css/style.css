@@ -2,7 +2,7 @@ form input {
     text-transform: uppercase;
 }
 
-form input[name=senha] {
+form input[name=senha], form input[name=conteudo] {
     text-transform: none !important;
 }
 

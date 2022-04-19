@@ -39,7 +39,6 @@ function usuariosTodas($params) {
 }
 
 function usuariosID($params) {
-    
     try {
         global $conexao;
 
@@ -81,6 +80,8 @@ function usuariosInserir($params) {
 
         $conexao->beginTransaction();
 
+        $params['senha'] = password_hash($params['senha'], PASSWORD_DEFAULT);
+
         $sql = 
             "INSERT INTO usuarios
             (
@@ -91,7 +92,7 @@ function usuariosInserir($params) {
                 id_perfil
             ) VALUES 
             (
-                :nome,
+                LOWER(:nome),
                 :cpf,
                 :senha,
                 :telefone,

@@ -84,8 +84,8 @@ function escolasInserir($params) {
                 id_localidade
             ) VALUES 
             (
-                :nome, 
-                :responsavel, 
+                upper(:nome), 
+                upper(:responsavel), 
                 :id_localidade
             )";
 
@@ -115,8 +115,8 @@ function escolasAtualizar($params) {
             "UPDATE 
                 escolas
             SET
-                nome = :nome,
-                responsavel = :responsavel, 
+                nome = upper(:nome),
+                responsavel = upper(:responsavel), 
                 id_localidade = :id_localidade
             WHERE
                 id = :id";

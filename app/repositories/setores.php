@@ -75,7 +75,7 @@ function setoresInserir($params) {
                 descricao
             ) VALUES 
             (
-                :descricao
+                upper(:descricao)
             )";
 
         $consulta = $conexao->prepare($sql);
@@ -104,7 +104,7 @@ function setoresAtualizar($params) {
             "UPDATE 
                 setores
             SET
-                descricao = :descricao
+                descricao = upper(:descricao)
             WHERE
                 id = :id";
 

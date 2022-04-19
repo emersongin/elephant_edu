@@ -8,23 +8,29 @@ function autenticacaoUsuario($params) {
 
         $conexao->beginTransaction();
 
+        $params['nome'] = strtolower($params['nome']);
+
         $sql = 
             "SELECT
                 u.id,
                 u.nome as nome_usuario,
+                u.senha as hash,
                 u.id_perfil,
                 p.descricao as perfil_usuario
             FROM
                 usuarios u
             JOIN perfis p ON p.id = u.id_perfil
             WHERE
-                u.nome = :nome
-                AND u.senha = :senha";
+                u.nome = :nome";
 
         $consulta = $conexao->prepare($sql);
-        $consulta->execute($params);
+        $consulta->execute([
+            'nome' => $params['nome']
+        ]);
     
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
+
+        if(!password_verify($params['senha'], $usuario['hash'])) return false;
 
         if($usuario) {
             $token = password_hash($params['senha'], PASSWORD_DEFAULT);
