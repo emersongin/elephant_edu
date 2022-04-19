@@ -20,9 +20,9 @@
                 </div>
                 <div class="collapse <?= $menu_ativo === 'cadastro' ? 'show' : ''; ?>" id="collapse-menu-cadastro">
                     <div class="bg-theme-primary p-2">
-                        <a href="setores.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'setores' ? 'btn-light' : 'btn-primary'; ?>">Setores</a>
-                        <a href="localidades.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'localidades' ? 'btn-light' : 'btn-primary'; ?>">Localidades</a>
-                        <a href="escolas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'escolas' ? 'btn-light' : 'btn-primary'; ?>">Escolas</a>
+                        <?= $perfil_admin ? '<a href="setores.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'setores' ? 'btn-light' : 'btn-primary') .' ">Setores</a>' : '' ?>
+                        <?= $perfil_admin ? '<a href="localidades.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'localidades' ? 'btn-light' : 'btn-primary') .' ">Localidades</a>' : '' ?>
+                        <?= $perfil_admin ? '<a href="escolas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'escolas' ? 'btn-light' : 'btn-primary') .' ">Escolas</a>' : '' ?>
                         <a href="visitas.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'visitas' ? 'btn-light' : 'btn-primary'; ?>">Visitas</a>
 
                         <?= $perfil_admin ? '<a href="usuarios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold '. ($pagina_atual == 'usuarios' ? 'btn-light' : 'btn-primary') .' ">Usuários</a>' : '' ?>

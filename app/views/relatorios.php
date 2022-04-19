@@ -15,12 +15,12 @@
     $pdf->Ln(30);
     $pdf->SetFillColor(211, 211, 211);
     $pdf->SetFont('Arial', 'I', 10);
-    $pdf->Cell(45, 14, 'Professor', 1, 0, 'C', TRUE);
+    $pdf->Cell(50, 14, 'Professor', 1, 0, 'C', TRUE);
     $pdf->Cell(45, 14, 'Telefone', 1, 0, 'C', TRUE);
     $pdf->Cell(45, 14, 'Quantidade de Alunos', 1, 0, 'C', TRUE);
-    $pdf->Cell(50, 14, utf8_decode('Conteúdo'), 1, 0, 'C', TRUE);
+    $pdf->Cell(50, 14, utf8_decode('Escola'), 1, 0, 'C', TRUE);
     $pdf->Cell(45, 14, 'Data da visita', 1, 0, 'C', TRUE);
-    $pdf->Cell(45, 14, 'Coordenador', 1, 0, 'C', TRUE);
+    $pdf->Cell(40, 14, 'Coordenador', 1, 0, 'C', TRUE);
     $pdf->Ln();
 
     $visitas = json_decode(visitasTodas([ 
@@ -47,17 +47,18 @@
         // responsavel as nm_responsavel
 
         foreach($visitas as $visita){
-            $pdf->Cell(45 ,14 , utf8_decode($visita->professor), 1 ,0, 'C');
+            $pdf->Cell(50 ,14 , utf8_decode($visita->professor), 1 ,0, 'C');
             $pdf->Cell(45 ,14 , $visita->telefone, 1 ,0 , 'C');
             $pdf->Cell(45 ,14 , $visita->qtd_alunos, 1 ,0 , 'C');
-            $pdf->Cell(50 ,14 , utf8_decode($visita->conteudo), 1,0, 'C');
+            $pdf->Cell(50 ,14 , utf8_decode($visita->nm_escola), 1,0, 'C');
             $pdf->Cell(45 ,14 , $visita->data_visita_formatada, 1,0, 'C');
-            $pdf->Cell(45 ,14 , utf8_decode($visita->nm_usuario), 1, 0, 'C');
+            $pdf->Cell(40 ,14 , utf8_decode($visita->nm_usuario), 1, 0, 'C');
             $pdf->Ln();
         }
 
     } else {
-        $pdf->Cell(275, 14, utf8_decode('nenhuma informação foi obitida até o momento...'), 1, 0, 'C');
+        $pdf->Cell(275, 14, utf8_decode('nenhuma informação foi obtida até o momento...'), 1, 0, 'C');
+        
     }
 
     $pdf->OutPut();
