@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="localidade-setor" class="form-label fw-bold">Setor:</label>
-                                    <select class="form-select form-select-md localidade-setor" id="localidade-setor" form="form-editar-localidade" name="id_setor">
+                                    <select class="form-select form-select-md localidade-setor" id="localidade-setor-editar" form="form-editar-localidade" name="id_setor">
                                         <option disabled selected>selecione o setor</option>
                                     </select>
                                 </div>

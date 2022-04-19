@@ -1,13 +1,13 @@
 window.onload = () => {
-    listarUsuario();
-    listarPerfis();
+    listarLocalidades();
+    listarSetores();
     submitFormCadastro();
     submitFormAtualizar();
 
 }
 
 function submitFormCadastro() {
-    const form = document.getElementById('form-cadastro-usuario');
+    const form = document.getElementById('form-cadastro-localidade');
     const button = document.getElementById('btn-cadastro');
 
     form.addEventListener("submit", async function (e) {
@@ -15,19 +15,16 @@ function submitFormCadastro() {
 
         const formData = new FormData(form);
         const cadastro = {
-            nome: formData.get('nome'),
-            cpf: formData.get('cpf'),
-            telefone: formData.get('telefone'),
-            senha: formData.get('senha'),
-            id_perfil: formData.get('id_perfil')
+            descricao: formData.get('descricao'),
+            id_setor: formData.get('id_setor'),
         };
 
         button.disabled = true;
 
-        const usuario = await fetchCadastrarUsuario(cadastro);
+        const localidade = await fetchCadastrarLocalidade(cadastro);
 
-        if(usuario) {
-            listarUsuario();
+        if(localidade) {
+            listarLocalidades();
             form.reset();
 
         }
@@ -38,9 +35,9 @@ function submitFormCadastro() {
 }
 
 function submitFormAtualizar() {
-    const form = document.getElementById('form-editar-usuario');
+    const form = document.getElementById('form-editar-localidade');
     const button = document.getElementById('btn-atualizar');
-    const modal = new bootstrap.Modal(document.getElementById('modal-usuarios'));
+    const modal = new bootstrap.Modal(document.getElementById('modal-localidades'));
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -48,20 +45,18 @@ function submitFormAtualizar() {
         const formData = new FormData(form);
         const atualizacao = {
             id: formData.get('id'),
-            nome: formData.get('nome'),
-            cpf: formData.get('cpf'),
-            telefone: formData.get('telefone'),
-            id_perfil: formData.get('id_perfil')
+            descricao: formData.get('descricao'),
+            id_setor: formData.get('id_setor'),
         };
 
         button.disabled = true;
 
-        const usuario = await fetchAtualizarUsuario(atualizacao);
+        const localidade = await fetchAtualizarLocalidade(atualizacao);
 
-        if(usuario) {
+        if(localidade) {
             form.reset();
             modal.hide();
-            listarUsuario();
+            listarLocalidades();
 
         }
 
@@ -70,71 +65,65 @@ function submitFormAtualizar() {
     });
 }
 
-async function excluirUsuario(usuario) {
-    if(confirm(`Deseja realmente excluir o usuário: ${usuario.nome}`)) {
-        const excluido = await fetchExcluirUsuario(usuario.id);
+async function excluirLocalidade(usuario) {
+    if(confirm(`Deseja realmente excluir a localidade: ${usuario.ds_localidade}`)) {
+        const excluido = await fetchExcluirLocalidade(usuario.id);
 
         if(excluido) { 
-            listarUsuario(); 
+            listarLocalidades(); 
         }
 
     }
 }
 
-function editarUsuario(usuario) {
-    const form = document.getElementById('form-editar-usuario');
+function editarLocalidade(localidade) {
+    const form = document.getElementById('form-editar-localidade');
 
     form.reset();
 
-    const inputID = document.querySelector('#form-editar-usuario #usuario-id');
-    const inputNome = document.querySelector('#form-editar-usuario #usuario-nome');
-    const inputCPF = document.querySelector('#form-editar-usuario #usuario-cpf');
-    const inputTelefone = document.querySelector('#form-editar-usuario #usuario-telefone');
-    const selectPerfil = document.querySelector('#form-editar-usuario #usuario-perfil-editar');
+    const inputID = document.querySelector('#form-editar-localidade #localidade-id');
+    const inputDescricao = document.querySelector('#form-editar-localidade #localidade-descricao');
+    const selectSetor = document.querySelector('#form-editar-localidade #localidade-setor-editar');
 
-    inputID.value = usuario.id;
-    inputNome.value = usuario.nome;
-    inputCPF.value = usuario.cpf;
-    inputTelefone.value = usuario.telefone;
-    selectPerfil.value = usuario.id_perfil;
+    inputID.value = localidade.id;
+    inputDescricao.value = localidade.ds_localidade;
+    selectSetor.value = localidade.id_setor;
 
 }
 
-async function listarUsuario() {
-    const tabela = document.getElementById('tabela-usuarios-body');
+async function listarLocalidades() {
+    const tabela = document.getElementById('tabela-localidades-body');
 
     tabela.innerHTML = spinner();
 
-    const usuarios  = await fetchUsuarios();
+    const localidades  = await fetchLocalidades();
 
-    if(usuarios && usuarios.length) {
+    if(localidades && localidades.length) {
         let linhas = '';
 
-        usuarios.forEach((usuario, index) => {
-            linhas += linhaUsuario(usuario, index + 1);
+        localidades.forEach((localidade, index) => {
+            linhas += linhaLocalidades(localidade, index + 1);
         });
 
         tabela.innerHTML = linhas;
     } else {
-        tabela.innerHTML = '<tr>Nenhum usuário foi encontrado.</tr>';
+        tabela.innerHTML = '<tr><p class="mt-2">Nenhuma localidade foi encontrada.</p></tr>';
     }
 
 }
 
-function linhaUsuario(usuario, index) {
+function linhaLocalidades(localidade, index) {
     return `
         <tr>
             <th class="table-light" scope="row">${index}</th>
-            <td class="table-light">${usuario.nome}</td>
-            <td class="table-light">${usuario.cpf}</td>
-            <td class="table-light d-none d-md-table-cell">${usuario.telefone}</td>
-            <td class="table-light d-none d-md-table-cell">${usuario.ds_perfil}</td>
+            <td class="table-light">${localidade.ds_localidade}</td>
+            <td class="table-light">${localidade.ds_setor}</td>
             <td class="table-light text-center">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-warning" title="editar usuário" data-bs-toggle="modal" data-bs-target="#modal-usuarios" onclick='editarUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-warning" title="editar localidade" data-bs-toggle="modal" data-bs-target="#modal-localidades" onclick='editarLocalidade(${JSON.stringify(localidade)});'>
                         <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                     </button>
-                    <button type="button" class="btn btn-danger" title="excluir usuário" onclick='excluirUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-danger" title="excluir localidade" onclick='excluirLocalidade(${JSON.stringify(localidade)});'>
                         <i class="fa fa-trash text-white" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -143,21 +132,21 @@ function linhaUsuario(usuario, index) {
     `;
 }
 
-async function listarPerfis() {
-    const selects = document.getElementsByClassName('usuario-perfil');
+async function listarSetores() {
+    const selects = document.getElementsByClassName('localidade-setor');
 
     for (const select of selects) {
         select.disabled = true;
     }
 
-    let opcoes = '<option disabled selected>selecione um perfil</option>';
+    let opcoes = '<option disabled selected>selecione um setor</option>';
 
-    const perfis  = await fetchPerfis();
+    const setores  = await fetchSetores();
 
-    if(perfis && perfis.length) {
+    if(setores && setores.length) {
 
-        perfis.forEach((perfil, index) => {
-            opcoes += `<option value="${perfil.id}">${perfil.descricao}</option>`;
+        setores.forEach((setor, index) => {
+            opcoes += `<option value="${setor.id}">${setor.ds_setor}</option>`;
         });
 
         for (const select of selects) {
@@ -172,23 +161,23 @@ async function listarPerfis() {
 
 }
 
-function fetchUsuarios() {
+function fetchLocalidades() {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { method: 'GET' });
-            const usuarios = await response.json();
+            const response = await fetch(server + 'localidades.php', { method: 'GET' });
+            const localidades = await response.json();
 
-            res(usuarios);
+            res(localidades);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchCadastrarUsuario(cadastro) {
+function fetchCadastrarLocalidade(cadastro) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { 
+            const response = await fetch(server + 'localidades.php', { 
                 method: "POST",
                 mode: "same-origin",
                 credentials: "same-origin",
@@ -197,19 +186,19 @@ function fetchCadastrarUsuario(cadastro) {
                 },
                 body: JSON.stringify(cadastro)
             });
-            const usuario = await response.json();
+            const localidade = await response.json();
 
-            res(usuario);
+            res(localidade);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchAtualizarUsuario(atualizacao) {
+function fetchAtualizarLocalidade(atualizacao) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php?' + new URLSearchParams({
+            const response = await fetch(server + 'localidades.php?' + new URLSearchParams({
                 id: atualizacao.id
             }), { 
                 method: "PUT",
@@ -220,19 +209,19 @@ function fetchAtualizarUsuario(atualizacao) {
                 },
                 body: JSON.stringify(atualizacao)
             });
-            const usuario = await response.json();
+            const localidade = await response.json();
 
-            res(usuario);
+            res(localidade);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchExcluirUsuario(id) {
+function fetchExcluirLocalidade(id) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { 
+            const response = await fetch(server + 'localidades.php', { 
                 method: "DELETE",
                 mode: "same-origin",
                 credentials: "same-origin",
@@ -241,9 +230,9 @@ function fetchExcluirUsuario(id) {
                 },
                 body: JSON.stringify({ id })
             });
-            const usuario = await response.json();
+            const localidade = await response.json();
 
-            res(usuario);
+            res(localidade);
         } catch (error) {
             rej(false);
             
@@ -251,13 +240,13 @@ function fetchExcluirUsuario(id) {
     });
 }
 
-function fetchPerfis(url, params) {
+function fetchSetores(url, params) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'perfis.php', { method: 'GET' });
-            const perfis = await response.json();
+            const response = await fetch(server + 'setores.php', { method: 'GET' });
+            const setores = await response.json();
 
-            res(perfis);
+            res(setores);
         } catch (error) {
             rej(false);
         }
