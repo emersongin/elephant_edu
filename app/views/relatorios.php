@@ -12,6 +12,12 @@ $pdo = new PDO ('mysql:host=localhost; dbname=elephant_edu','root','');
 $sql = $pdo->prepare("SELECT * FROM visitas");
 $sql->execute();
 
+/*
+$pdo2 = new PDO ('mysql:host=localhost; dbname=elephant_edu','root','');
+$sql2 = $pdo2->prepare("SELECT * FROM usuarios");
+$sql2->execute();
+*/
+
 $pdf->SetFillColor(211,211,211);
 $pdf -> SetFont('Arial','I',10);
 $pdf-> Cell(45,14,'Professor',1,0,'C',TRUE);
@@ -31,5 +37,10 @@ foreach($sql as $resultado){
     $pdf->Cell(45,14,$resultado['criado_em'],1,0,'C');
     $pdf->Ln();
 }
+/* Para exibir os dados da tabela usuarios
+foreach($sql2 as $resultado2){
+    $pdf->Cell(45,14, utf8_decode($resultado2['nome']),1,0,'C');
+}
+*/
 
 $pdf->OutPut();
