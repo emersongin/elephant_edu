@@ -31,19 +31,19 @@
                                 <label for="usuario-nome" class="form-label fw-bold">Nome de usuário</label>
                                 <input type="text" class="form-control" id="usuario-nome" name="nome" required>
                             </div>
-                            <div class="col-12">
-                                <label for="usuario-cpf" class="form-label fw-bold">CPF</label>
-                                <input type="text" class="form-control" id="usuario-cpf" name="cpf" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="usuario-telefone" class="form-label fw-bold">Telefone</label>
-                                <input type="text" class="form-control" id="usuario-telefone" name="telefone" required>
-                            </div>
-                            <div class="col-12">
+                            <div class="col-12 col-md-4">
                                 <label for="usuario-senha" class="form-label fw-bold">Senha</label>
                                 <input type="text" class="form-control" id="usuario-senha" name="senha" required>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 col-md-4">
+                                <label for="usuario-cpf" class="form-label fw-bold">CPF</label>
+                                <input type="text" class="form-control" id="usuario-cpf" name="cpf" required>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="usuario-telefone" class="form-label fw-bold">Telefone</label>
+                                <input type="text" class="form-control" id="usuario-telefone" name="telefone" required>
+                            </div>
+                            <div class="col-12 col-md-4">
                                 <label for="usuario-perfil" class="form-label fw-bold">Perfil</label>
                                 <select class="form-select form-select-md usuario-perfil" id="usuario-perfil-cadastro" form="form-cadastro-usuario" name="id_perfil" required>
                                     <option disabled selected>selecione um perfil</option>

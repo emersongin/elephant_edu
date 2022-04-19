@@ -28,11 +28,11 @@
                     <div class="card-body">
                         <form id="form-cadastro-localidade">
                             <div class="row p-3">
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <label for="localidade-descricao" class="form-label fw-bold">Descrição:</label>
                                     <input type="text" class="form-control w-full" id="localidade-descricao" name="descricao">
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <label for="localidade-setor" class="form-label fw-bold">Setor:</label>
                                     <select class="form-select form-select-md" id="localidade-setor" form="form-cadastro-localidade" name="id_setor">
                                         <option disabled selected>selecione o setor</option>
@@ -56,11 +56,11 @@
                         </div>
                         <form id="form-editar-localidade" class="row p-3">
                             <div class="modal-body">
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <label for="localidade-descricao" class="form-label fw-bold">Descrição:</label>
                                     <input type="text" class="form-control w-full" id="localidade-descricao" name="descricao">
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <label for="localidade-setor" class="form-label fw-bold">Setor:</label>
                                     <select class="form-select form-select-md" id="localidade-setor" form="form-editar-localidade" name="id_setor">
                                         <option disabled selected>selecione o setor</option>
