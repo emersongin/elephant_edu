@@ -55,7 +55,7 @@
             <?= $perfil_admin ? '<li class="nav-item"><a href="usuarios.php" class="nav-link text-uppercase fw-bold '. ($pagina_atual == 'usuarios' ? 'text-white' : '') .' ">Usuários</a></li>' : '' ?>
 
             <li class="nav-item">
-                <a href="../views/relatorios.php" class="nav-link text-uppercase fw-bold <?= $pagina_atual == 'relatorio' ? 'text-white' : ''; ?>">
+                <a target="_blank" href="../views/relatorios.php" class="nav-link text-uppercase fw-bold <?= $pagina_atual == 'relatorio' ? 'text-white' : ''; ?>">
                     Relatório
                 </a>
             </li>

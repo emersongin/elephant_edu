@@ -16,7 +16,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
         echo $id ? visitasID($params) : falha();
         
     } else {
-        echo visitasTodas();
+        echo visitasTodas([ 
+            'id' => $auth_user_id, 
+            'id_perfil' => $auth_user_id_perfil,
+        ]);
 
     }
 

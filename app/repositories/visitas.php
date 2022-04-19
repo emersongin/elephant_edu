@@ -1,23 +1,36 @@
 <?php
 
-include "../config/database/conexao.php";
+require_once "../config/database/conexao.php";
 
-function visitasTodas() {
+function visitasTodas($params) {
 	try {
 		global $conexao;
 
 		$conexao->beginTransaction();
 
+		$where = '';
+
+		if(isset($params['id']) && (!isset($params['id_perfil']) || $params['id_perfil'] != 1)) {
+			$where = "WHERE v.id_usuario = :id";
+
+		} else {
+			if(isset($params['id'])) unset($params['id']);
+			
+		}
+		
+		if(isset($params['id_perfil'])) unset($params['id_perfil']);
+
 		$sql = 
 			"SELECT 
 				v.id, 
 				v.qtd_alunos,
-				v.conteudo, 
-				v.professor, 
+				v.conteudo,
+				v.professor,
 				v.telefone,
 				v.data_visita,
 				DATE_FORMAT(v.data_visita, '%d/%m/%Y') as data_visita_formatada, 
 				v.criado_em,
+				DATE_FORMAT(v.criado_em, '%d/%m/%Y') as criado_em_formatada, 
 				u.nome as nm_usuario,
 				u.cpf as cpf_usuario,
 				u.telefone as telefone_usuario,
@@ -29,10 +42,11 @@ function visitasTodas() {
 				visitas v
 			JOIN usuarios u ON u.id = v.id_usuario
 			JOIN setores s ON s.id = v.id_setor
-			JOIN escolas e ON e.id = v.id_escola";
+			JOIN escolas e ON e.id = v.id_escola
+			{$where}";
 
 		$consulta = $conexao->prepare($sql);
-		$consulta->execute();
+		$consulta->execute($params);
 
 		$visitas = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
@@ -63,6 +77,7 @@ function visitasID($params) {
 				v.data_visita,
 				DATE_FORMAT(v.data_visita, '%d/%m/%Y') as data_visita, 
 				v.criado_em,
+				DATE_FORMAT(v.criado_em, '%d/%m/%Y') as criado_em_formatada,
 				u.nome as nm_usuario,
 				u.cpf as cpf_usuario,
 				u.telefone as telefone_usuario,

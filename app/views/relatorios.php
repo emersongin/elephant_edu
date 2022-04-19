@@ -1,46 +1,63 @@
 <?php
-define ('FPDF_FONTPATH','font/');
-require('../assets/lib/fpdf/fpdf.php');
 
-$pdf = new FPDF ();
-$pdf -> AddPage('L');
-$pdf -> SetFont('Arial','B',20,'C');
-$pdf -> Cell(270, 20,utf8_decode('Relatório Geral de Visitas'),0,0,"C");
-$pdf-> Ln(30);
+    define ('FPDF_FONTPATH','font/');
+    require('../assets/lib/fpdf/fpdf.php');
 
-$pdo = new PDO ('mysql:host=localhost; dbname=elephant_edu','root','');
-$sql = $pdo->prepare("SELECT * FROM visitas");
-$sql->execute();
+    include_once "../includes/autorizacao.php";
+    include_once "../includes/functions.php";
+    include_once "../repositories/visitas.php";
 
-/*
-$pdo2 = new PDO ('mysql:host=localhost; dbname=elephant_edu','root','');
-$sql2 = $pdo2->prepare("SELECT * FROM usuarios");
-$sql2->execute();
-*/
+    $pdf = new FPDF();
 
-$pdf->SetFillColor(211,211,211);
-$pdf -> SetFont('Arial','I',10);
-$pdf-> Cell(45,14,'Professor',1,0,'C',TRUE);
-$pdf-> Cell(45,14,'Telefone',1,0,'C',TRUE);
-$pdf-> Cell(45,14,'Quantidade de Alunos',1,0,'C',TRUE);
-$pdf-> Cell(50,14,utf8_decode('Conteúdo'),1,0,'C',TRUE);
-$pdf-> Cell(45,14,'Data da visita',1,0,'C',TRUE);
-$pdf-> Cell(45,14,'Criado em',1,0,'C',TRUE);
-$pdf->Ln();
-
-foreach($sql as $resultado){
-    $pdf->Cell(45,14, utf8_decode($resultado['professor']),1,0,'C');
-    $pdf->Cell(45,14,$resultado['telefone'],1,0,'C');
-    $pdf->Cell(45,14,$resultado['qtd_alunos'],1,0,'C');
-    $pdf->Cell(50,14,utf8_decode($resultado['conteudo']),1,0,'C');
-    $pdf->Cell(45,14,$resultado['data_visita'],1,0,'C');
-    $pdf->Cell(45,14,$resultado['criado_em'],1,0,'C');
+    $pdf->AddPage('L');
+    $pdf->SetFont('Arial', 'B', 20, 'C');
+    $pdf->Cell(270, 20, utf8_decode('Relatório de Visitas'), 0, 0, "C");
+    $pdf->Ln(30);
+    $pdf->SetFillColor(211, 211, 211);
+    $pdf->SetFont('Arial', 'I', 10);
+    $pdf->Cell(45, 14, 'Professor', 1, 0, 'C', TRUE);
+    $pdf->Cell(45, 14, 'Telefone', 1, 0, 'C', TRUE);
+    $pdf->Cell(45, 14, 'Quantidade de Alunos', 1, 0, 'C', TRUE);
+    $pdf->Cell(50, 14, utf8_decode('Conteúdo'), 1, 0, 'C', TRUE);
+    $pdf->Cell(45, 14, 'Data da visita', 1, 0, 'C', TRUE);
+    $pdf->Cell(45, 14, 'Coordenador', 1, 0, 'C', TRUE);
     $pdf->Ln();
-}
-/* Para exibir os dados da tabela usuarios
-foreach($sql2 as $resultado2){
-    $pdf->Cell(45,14, utf8_decode($resultado2['nome']),1,0,'C');
-}
-*/
 
-$pdf->OutPut();
+    $visitas = json_decode(visitasTodas([ 
+        'id' => $auth_user_id,
+        'id_perfil' => $auth_user_id_perfil,
+    ]));
+
+    if(is_array($visitas) && count($visitas)) {
+        // id, 
+        // qtd_alunos,
+        // conteudo, 
+        // professor, 
+        // telefone,
+        // data_visita,
+        // data_visita_formatada, 
+        // criado_em,
+        // criado_em_formatada,
+        // nome as nm_usuario,
+        // cpf as cpf_usuario,
+        // telefone as telefone_usuario,
+        // id_setor,
+        // descricao as ds_setor_visita,
+        // nome as nm_escola,
+        // responsavel as nm_responsavel
+
+        foreach($visitas as $visita){
+            $pdf->Cell(45 ,14 , utf8_decode($visita->professor), 1 ,0, 'C');
+            $pdf->Cell(45 ,14 , $visita->telefone, 1 ,0 , 'C');
+            $pdf->Cell(45 ,14 , $visita->qtd_alunos, 1 ,0 , 'C');
+            $pdf->Cell(50 ,14 , utf8_decode($visita->conteudo), 1,0, 'C');
+            $pdf->Cell(45 ,14 , $visita->data_visita_formatada, 1,0, 'C');
+            $pdf->Cell(45 ,14 , utf8_decode($visita->nm_usuario), 1, 0, 'C');
+            $pdf->Ln();
+        }
+
+    } else {
+        $pdf->Cell(275, 14, utf8_decode('nenhuma informação foi obitida até o momento...'), 1, 0, 'C');
+    }
+
+    $pdf->OutPut();

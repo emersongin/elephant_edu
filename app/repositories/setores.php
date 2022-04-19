@@ -1,6 +1,6 @@
 <?php
 
-include "../config/database/conexao.php";
+require_once "../config/database/conexao.php";
 
 function setoresTodas() {
     try {

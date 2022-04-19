@@ -38,7 +38,7 @@
                 </div>
                 <div class="collapse <?= $menu_ativo === 'relatorio' ? 'show' : ''; ?>" id="collapse-menu-relatorio">
                     <div class="bg-theme-primary p-2">
-                        <a href="../views/relatorios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>">Relatório</a>
+                        <a target="_blank" href="../views/relatorios.php" class="btn mb-1 w-100 text-uppercase font-weight-bold <?= $pagina_atual == 'relatorio' ? 'btn-light' : 'btn-primary'; ?>">Relatório</a>
                     </div>
                 </div>
             </li>
