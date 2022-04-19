@@ -9,14 +9,14 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     if(isset($_GET['id'])) {
         $id = isset($_GET['id']) ? parseId($_GET['id']) : false;
 
-        $params = array(
-            'id' => $id
-        );
+        $params = [ 'id' => $id ];
 
         echo $id ? usuariosID($params) : falha();
         
     } else {
-        echo usuariosTodas();
+        echo usuariosTodas([
+            'id_user' => $auth_user_id
+        ]);
 
     }
 
@@ -32,13 +32,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_perfil = isset($_POST['id_perfil']) ? parseId($_POST['id_perfil']) : false;
 
     $valido = $nome && $cpf && $senha && $telefone && $id_perfil;
-    $params = array(
+    $params = [
         'nome'      => $nome,
         'cpf'       => $cpf,
         'senha'     => $senha,
         'telefone'  => $telefone,
         'id_perfil' => $id_perfil
-    );
+    ];
 
     echo $valido ? usuariosInserir($params) : falha('parametros inválido!');
     exit;
@@ -53,13 +53,13 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $id_perfil = isset($_PUT['id_perfil']) ? parseId($_PUT['id_perfil']) : false;
 
     $valido = $id && $nome && $cpf && $telefone && $id_perfil;
-    $params = array(
+    $params = [
         'id'        => $id,
         'nome'      => $nome,
         'cpf'       => $cpf,
         'telefone'  => $telefone,
         'id_perfil' => $id_perfil
-    );
+    ];
 
     echo $valido ? usuariosAtualizar($params) : falha('parametros inválido!');
     exit;
@@ -69,9 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     
     $id = isset($_DELETE['id']) ? parseId($_DELETE['id']) : false;
 
-    $params = array(
-        'id' => $id
-    );
+    $params = [ 'id' => $id ];
 
     echo $id ? usuariosApagar($params) : falha('parametros inválido!');
     exit;

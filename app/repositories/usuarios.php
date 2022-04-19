@@ -2,8 +2,7 @@
 
 include "../config/database/conexao.php";
 
-function usuariosTodas() {
-    
+function usuariosTodas($params) {
     try {
         global $conexao;
 
@@ -19,10 +18,12 @@ function usuariosTodas() {
                 p.descricao as ds_perfil
             FROM
                 usuarios u
-            JOIN perfis p ON p.id = u.id_perfil";
+            JOIN perfis p ON p.id = u.id_perfil
+            WHERE
+                u.id <> :id_user";
 
         $consulta = $conexao->prepare($sql);
-        $consulta->execute();
+        $consulta->execute($params);
     
         $usuarios = $consulta->fetchAll(PDO::FETCH_ASSOC);
     

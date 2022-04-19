@@ -1,5 +1,9 @@
-* {
+form input {
+    text-transform: uppercase;
+}
 
+form input[name=senha] {
+    text-transform: none !important;
 }
 
 body {
