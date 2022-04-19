@@ -12,16 +12,12 @@ function escolasTodas() {
             "SELECT
                 e.id,
                 e.nome as nm_escola,
-                e.id_responsavel,
-                u.nome as nm_responsavel,
+                e.responsavel,
                 e.id_localidade,
-                l.descricao as ds_localidade,
-                s.descricao  as ds_setor
+                l.descricao as ds_localidade
             FROM
                 escolas e
-            JOIN usuarios u ON u.id = e.id_responsavel
-            JOIN localidades l ON l.id = e.id_localidade
-            JOIN setores s ON s.id = l.id_setor";
+            JOIN localidades l ON l.id = e.id_localidade";
 
         $consulta = $conexao->prepare($sql);
         $consulta->execute();
@@ -49,16 +45,12 @@ function escolasID($params) {
             "SELECT
                 e.id,
                 e.nome as nm_escola,
-                e.id_responsavel,
-                u.nome as nm_responsavel,
+                e.responsavel,
                 e.id_localidade,
-                l.descricao as ds_localidade,
-                s.descricao  as ds_setor
+                l.descricao as ds_localidade
             FROM
                 escolas e
-            JOIN usuarios u ON u.id = e.id_responsavel
             JOIN localidades l ON l.id = e.id_localidade
-            JOIN setores s ON s.id = l.id_setor
             WHERE
                 e.id = :id";
 
@@ -88,12 +80,12 @@ function escolasInserir($params) {
             "INSERT INTO escolas
             (
                 nome, 
-                id_responsavel, 
+                responsavel, 
                 id_localidade
             ) VALUES 
             (
                 :nome, 
-                :id_responsavel, 
+                :responsavel, 
                 :id_localidade
             )";
 
@@ -124,7 +116,7 @@ function escolasAtualizar($params) {
                 escolas
             SET
                 nome = :nome,
-                id_responsavel = :id_responsavel, 
+                responsavel = :responsavel, 
                 id_localidade = :id_localidade
             WHERE
                 id = :id";

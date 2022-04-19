@@ -40,7 +40,7 @@
                 </div>
             </article>
             <article><!-- Modal -->
-                <div class="modal fade" id="modal-escolas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
+                <div class="modal fade" id="modal-setores" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">

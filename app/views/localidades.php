@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="localidade-setor" class="form-label fw-bold">Setor:</label>
-                                    <select class="form-select form-select-md" id="localidade-setor" form="form-cadastro-localidade" name="id_setor">
+                                    <select class="form-select form-select-md localidade-setor" id="localidade-setor" form="form-cadastro-localidade" name="id_setor">
                                         <option disabled selected>selecione o setor</option>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                 </div>
             </article>
             <article><!-- Modal -->
-                <div class="modal fade" id="modal-escolas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
+                <div class="modal fade" id="modal-localidades" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="localidade-setor" class="form-label fw-bold">Setor:</label>
-                                    <select class="form-select form-select-md" id="localidade-setor" form="form-editar-localidade" name="id_setor">
+                                    <select class="form-select form-select-md localidade-setor" id="localidade-setor" form="form-editar-localidade" name="id_setor">
                                         <option disabled selected>selecione o setor</option>
                                     </select>
                                 </div>

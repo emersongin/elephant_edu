@@ -1,13 +1,13 @@
 window.onload = () => {
-    listarUsuario();
-    listarPerfis();
-    submitFormCadastro();
-    submitFormAtualizar();
+    listarEscolas();
+    // listarLocalidades();
+    // submitFormCadastro();
+    // submitFormAtualizar();
 
 }
 
 function submitFormCadastro() {
-    const form = document.getElementById('form-cadastro-usuario');
+    const form = document.getElementById('form-cadastro-escola');
     const button = document.getElementById('btn-cadastro');
 
     form.addEventListener("submit", async function (e) {
@@ -16,18 +16,16 @@ function submitFormCadastro() {
         const formData = new FormData(form);
         const cadastro = {
             nome: formData.get('nome'),
-            cpf: formData.get('cpf'),
-            telefone: formData.get('telefone'),
-            senha: formData.get('senha'),
-            id_perfil: formData.get('id_perfil')
+            responsavel: formData.get('responsavel'),
+            id_localidade: formData.get('id_localidade')
         };
 
         button.disabled = true;
 
-        const usuario = await fetchCadastrarUsuario(cadastro);
+        const escola = await fetchCadastrarEscola(cadastro);
 
-        if(usuario) {
-            listarUsuario();
+        if(escola) {
+            listarEscolas();
             form.reset();
 
         }
@@ -38,9 +36,9 @@ function submitFormCadastro() {
 }
 
 function submitFormAtualizar() {
-    const form = document.getElementById('form-editar-usuario');
+    const form = document.getElementById('form-editar-escola');
     const button = document.getElementById('btn-atualizar');
-    const modal = new bootstrap.Modal(document.getElementById('modal-usuarios'));
+    const modal = new bootstrap.Modal(document.getElementById('modal-escolas'));
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -49,19 +47,18 @@ function submitFormAtualizar() {
         const atualizacao = {
             id: formData.get('id'),
             nome: formData.get('nome'),
-            cpf: formData.get('cpf'),
-            telefone: formData.get('telefone'),
-            id_perfil: formData.get('id_perfil')
+            responsavel: formData.get('responsavel'),
+            id_localidade: formData.get('id_localidade')
         };
 
         button.disabled = true;
 
-        const usuario = await fetchAtualizarUsuario(atualizacao);
+        const escola = await fetchAtualizarEscola(atualizacao);
 
-        if(usuario) {
+        if(escola) {
             form.reset();
             modal.hide();
-            listarUsuario();
+            listarEscolas();
 
         }
 
@@ -70,71 +67,68 @@ function submitFormAtualizar() {
     });
 }
 
-async function excluirUsuario(usuario) {
-    if(confirm(`Deseja realmente excluir o usuário: ${usuario.nome}`)) {
-        const excluido = await fetchExcluirUsuario(usuario.id);
+async function excluirEscola(escola) {
+    if(confirm(`Deseja realmente excluir a escola: ${escola.nome}`)) {
+        const excluido = await fetchExcluirEscola(escola.id);
 
         if(excluido) { 
-            listarUsuario(); 
+            listarEscolas(); 
         }
 
     }
 }
 
-function editarUsuario(usuario) {
-    const form = document.getElementById('form-editar-usuario');
+function editarEscola(usuario) {
+    const form = document.getElementById('form-editar-escola');
 
     form.reset();
 
-    const inputID = document.querySelector('#form-editar-usuario #usuario-id');
-    const inputNome = document.querySelector('#form-editar-usuario #usuario-nome');
-    const inputCPF = document.querySelector('#form-editar-usuario #usuario-cpf');
-    const inputTelefone = document.querySelector('#form-editar-usuario #usuario-telefone');
-    const selectPerfil = document.querySelector('#form-editar-usuario #usuario-perfil-editar');
+    const inputID = document.querySelector('#form-editar-escola #escola-id');
+    const inputNome = document.querySelector('#form-editar-escola #escola-nome');
+    const inputResponsavel = document.querySelector('#form-editar-escola #escola-responsavel');
+    const selectLocalidade = document.querySelector('#form-editar-escola #escola-localidade-editar');
 
-    inputID.value = usuario.id;
-    inputNome.value = usuario.nome;
-    inputCPF.value = usuario.cpf;
-    inputTelefone.value = usuario.telefone;
-    selectPerfil.value = usuario.id_perfil;
+    inputID.value = escola.id;
+    inputNome.value = escola.nome;
+    inputResponsavel.value = escola.cpf;
+    selectLocalidade.value = escola.id_perfil;
 
 }
 
-async function listarUsuario() {
-    const tabela = document.getElementById('tabela-usuarios-body');
+async function listarEscolas() {
+    const tabela = document.getElementById('tabela-escolas-body');
 
     tabela.innerHTML = spinner();
 
-    const usuarios  = await fetchUsuarios();
+    const escolas  = await fetchEscolas();
 
-    if(usuarios && usuarios.length) {
+    if(escolas && escolas.length) {
         let linhas = '';
 
-        usuarios.forEach((usuario, index) => {
-            linhas += linhaUsuario(usuario, index + 1);
+        escolas.forEach((escola, index) => {
+            linhas += linhaEscola(escola, index + 1);
         });
 
         tabela.innerHTML = linhas;
     } else {
-        tabela.innerHTML = '<tr>Nenhum usuário foi encontrado.</tr>';
+        tabela.innerHTML = '<tr>Nenhuma escola foi encontrada.</tr>';
     }
 
 }
 
-function linhaUsuario(usuario, index) {
+function linhaEscola(escola, index) {
     return `
         <tr>
             <th class="table-light" scope="row">${index}</th>
-            <td class="table-light">${usuario.nome}</td>
-            <td class="table-light">${usuario.cpf}</td>
-            <td class="table-light d-none d-md-table-cell">${usuario.telefone}</td>
-            <td class="table-light d-none d-md-table-cell">${usuario.ds_perfil}</td>
+            <td class="table-light">${escola.nome}</td>
+            <td class="table-light">${escola.localidade}</td>
+            <td class="table-light d-none d-md-table-cell">${escola.responsavel}</td>
             <td class="table-light text-center">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-warning" title="editar usuário" data-bs-toggle="modal" data-bs-target="#modal-usuarios" onclick='editarUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-warning" title="editar escola" data-bs-toggle="modal" data-bs-target="#modal-escolas" onclick='editarEscola(${JSON.stringify(escola)});'>
                         <i class="fa fa-pencil text-white" aria-hidden="true"></i>
                     </button>
-                    <button type="button" class="btn btn-danger" title="excluir usuário" onclick='excluirUsuario(${JSON.stringify(usuario)});'>
+                    <button type="button" class="btn btn-danger" title="excluir escola" onclick='excluirEscola(${JSON.stringify(escola)});'>
                         <i class="fa fa-trash text-white" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -143,21 +137,21 @@ function linhaUsuario(usuario, index) {
     `;
 }
 
-async function listarPerfis() {
-    const selects = document.getElementsByClassName('usuario-perfil');
+async function listarLocalidades() {
+    const selects = document.getElementsByClassName('escola-localidade');
 
     for (const select of selects) {
         select.disabled = true;
     }
 
-    let opcoes = '<option disabled selected>selecione um perfil</option>';
+    let opcoes = '<option disabled selected>selecione uma localidade</option>';
 
-    const perfis  = await fetchPerfis();
+    const localidades  = await fetchLocalidades();
 
-    if(perfis && perfis.length) {
+    if(localidades && localidades.length) {
 
-        perfis.forEach((perfil, index) => {
-            opcoes += `<option value="${perfil.id}">${perfil.descricao}</option>`;
+        localidades.forEach((localidade, index) => {
+            opcoes += `<option value="${localidade.id}">${localidade.descricao}</option>`;
         });
 
         for (const select of selects) {
@@ -172,23 +166,23 @@ async function listarPerfis() {
 
 }
 
-function fetchUsuarios() {
+function fetchEscolas() {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { method: 'GET' });
-            const usuarios = await response.json();
+            const response = await fetch(server + 'escolas.php', { method: 'GET' });
+            const escolas = await response.json();
 
-            res(usuarios);
+            res(escolas);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchCadastrarUsuario(cadastro) {
+function fetchCadastrarEscola(cadastro) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { 
+            const response = await fetch(server + 'escolas.php', { 
                 method: "POST",
                 mode: "same-origin",
                 credentials: "same-origin",
@@ -197,19 +191,19 @@ function fetchCadastrarUsuario(cadastro) {
                 },
                 body: JSON.stringify(cadastro)
             });
-            const usuario = await response.json();
+            const escola = await response.json();
 
-            res(usuario);
+            res(escola);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchAtualizarUsuario(atualizacao) {
+function fetchAtualizarEscola(atualizacao) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php?' + new URLSearchParams({
+            const response = await fetch(server + 'escolas.php?' + new URLSearchParams({
                 id: atualizacao.id
             }), { 
                 method: "PUT",
@@ -220,19 +214,19 @@ function fetchAtualizarUsuario(atualizacao) {
                 },
                 body: JSON.stringify(atualizacao)
             });
-            const usuario = await response.json();
+            const escola = await response.json();
 
-            res(usuario);
+            res(escola);
         } catch (error) {
             rej(false);
         }
     });
 }
 
-function fetchExcluirUsuario(id) {
+function fetchExcluirEscola(id) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'usuarios.php', { 
+            const response = await fetch(server + 'escolas.php', { 
                 method: "DELETE",
                 mode: "same-origin",
                 credentials: "same-origin",
@@ -241,9 +235,9 @@ function fetchExcluirUsuario(id) {
                 },
                 body: JSON.stringify({ id })
             });
-            const usuario = await response.json();
+            const escola = await response.json();
 
-            res(usuario);
+            res(escola);
         } catch (error) {
             rej(false);
             
@@ -251,13 +245,13 @@ function fetchExcluirUsuario(id) {
     });
 }
 
-function fetchPerfis(url, params) {
+function fetchLocalidades(url, params) {
     return new Promise(async (res, rej) => {
         try {
-            const response = await fetch(server + 'perfis.php', { method: 'GET' });
-            const perfis = await response.json();
+            const response = await fetch(server + 'localidades.php', { method: 'GET' });
+            const localidades = await response.json();
 
-            res(perfis);
+            res(localidades);
         } catch (error) {
             rej(false);
         }

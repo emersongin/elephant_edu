@@ -38,8 +38,8 @@
                                     <input type="text" class="form-control w-full" id="escola-responsavel" name="responsavel" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="escola-localidade" class="form-label fw-bold">Localidade / Setor:</label>
-                                    <select class="form-select form-select-md" id="escola-localidade" form="form-cadastro-escola" name="id_localidade" required>
+                                    <label for="escola-localidade" class="form-label fw-bold">Localidade:</label>
+                                    <select class="form-select form-select-md escola-localidade" id="escola-localidade" form="form-cadastro-escola" name="id_localidade" required>
                                         <option disabled selected>selecione a localidade</option>
                                     </select>
                                 </div>
@@ -70,8 +70,8 @@
                                     <input type="text" class="form-control w-full" id="escola-responsavel" name="responsavel" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="escola-localidade-editar" class="form-label fw-bold">Localidade / Setor:</label>
-                                    <select class="form-select form-select-md" id="escola-localidade-editar" form="form-editar-escola" name="id_localidade" required>
+                                    <label for="escola-localidade-editar" class="form-label fw-bold">Localidade:</label>
+                                    <select class="form-select form-select-md escola-localidade" id="escola-localidade-editar" form="form-editar-escola" name="id_localidade" required>
                                         <option disabled selected>selecione a localidade e setor</option>
                                     </select>
                                 </div>

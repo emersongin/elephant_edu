@@ -26,14 +26,14 @@
                     <div class="card-body">
                         <form id="form-cadastro-visita" class="row p-3">
                             <div class="col-12">
-                                <label for="escola-visita" class="form-label fw-bold">Escola</label>
-                                <select class="form-select form-select-md escola-visita" id="escola-visita" form="form-cadastro-visita" name="id_escola" required>
+                                <label for="visita-escola" class="form-label fw-bold">Escola</label>
+                                <select class="form-select form-select-md visita-escola" id="visita-escola" form="form-cadastro-visita" name="id_escola" required>
                                     <option disabled selected>selecione a escola</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label for="setor-visita" class="form-label fw-bold">Setor</label>
-                                <select class="form-select form-select-md setor-visita" id="setor-visita" form="form-cadastro-visita" name="id_setor" required>
+                                <label for="visita-setor" class="form-label fw-bold">Setor</label>
+                                <select class="form-select form-select-md visita-setor" id="visita-setor" form="form-cadastro-visita" name="id_setor" required>
                                     <option disabled selected>selecione o setor</option>
                                 </select>
                             </div>
@@ -65,7 +65,7 @@
                 </div>
             </article>
             <article><!-- Modal -->
-                <div class="modal fade" id="modal-escolas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
+                <div class="modal fade" id="modal-visitas" tabindex="-1" aria-labelledby="modal-escolas" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -75,8 +75,8 @@
                         <form id="form-editar-visita" class="row p-3">
                             <div class="modal-body">
                                 <div class="col-12">
-                                    <label for="setor-visita" class="form-label fw-bold">Setor</label>
-                                    <select class="form-select form-select-md setor-visita" id="setor-visita" form="form-editar-visita" name="id_setor" required>
+                                    <label for="visita-setor" class="form-label fw-bold">Setor</label>
+                                    <select class="form-select form-select-md visita-setor" id="visita-setor" form="form-editar-visita" name="id_setor" required>
                                         <option disabled selected>selecione o setor</option>
                                     </select>
                                 </div>

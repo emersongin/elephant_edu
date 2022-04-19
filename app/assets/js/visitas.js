@@ -3,6 +3,7 @@ window.onload = () => {
     listarPerfis();
     submitFormCadastro();
     submitFormAtualizar();
+    document.getElementById('escola-data').valueAsDate = new Date();
 
 }
 

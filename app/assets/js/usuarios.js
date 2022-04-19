@@ -1,5 +1,5 @@
 window.onload = () => {
-    listarUsuario();
+    listarUsuarios();
     listarPerfis();
     submitFormCadastro();
     submitFormAtualizar();
@@ -27,7 +27,7 @@ function submitFormCadastro() {
         const usuario = await fetchCadastrarUsuario(cadastro);
 
         if(usuario) {
-            listarUsuario();
+            listarUsuarios();
             form.reset();
 
         }
@@ -61,7 +61,7 @@ function submitFormAtualizar() {
         if(usuario) {
             form.reset();
             modal.hide();
-            listarUsuario();
+            listarUsuarios();
 
         }
 
@@ -75,7 +75,7 @@ async function excluirUsuario(usuario) {
         const excluido = await fetchExcluirUsuario(usuario.id);
 
         if(excluido) { 
-            listarUsuario(); 
+            listarUsuarios(); 
         }
 
     }
@@ -100,7 +100,7 @@ function editarUsuario(usuario) {
 
 }
 
-async function listarUsuario() {
+async function listarUsuarios() {
     const tabela = document.getElementById('tabela-usuarios-body');
 
     tabela.innerHTML = spinner();
