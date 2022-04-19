@@ -1,6 +1,6 @@
 <?php
 
-include "../config/database/conexao.php";
+include_once "../config/database/conexao.php";
 
 function autenticacaoUsuario($params) {
     try {

@@ -78,7 +78,7 @@ async function excluirEscola(escola) {
     }
 }
 
-function editarEscola(usuario) {
+function editarEscola(escola) {
     const form = document.getElementById('form-editar-escola');
 
     form.reset();
@@ -89,9 +89,9 @@ function editarEscola(usuario) {
     const selectLocalidade = document.querySelector('#form-editar-escola #escola-localidade-editar');
 
     inputID.value = escola.id;
-    inputNome.value = escola.nome;
-    inputResponsavel.value = escola.cpf;
-    selectLocalidade.value = escola.id_perfil;
+    inputNome.value = escola.nm_escola;
+    inputResponsavel.value = escola.responsavel;
+    selectLocalidade.value = escola.id_localidade;
 
 }
 
@@ -111,7 +111,7 @@ async function listarEscolas() {
 
         tabela.innerHTML = linhas;
     } else {
-        tabela.innerHTML = '<tr>Nenhuma escola foi encontrada.</tr>';
+        tabela.innerHTML = '<tr><p class="mt-2">Nenhuma escola foi encontrada.</p></tr>';
     }
 
 }
@@ -120,8 +120,8 @@ function linhaEscola(escola, index) {
     return `
         <tr>
             <th class="table-light" scope="row">${index}</th>
-            <td class="table-light">${escola.nome}</td>
-            <td class="table-light">${escola.localidade}</td>
+            <td class="table-light">${escola.nm_escola}</td>
+            <td class="table-light">${escola.ds_localidade}</td>
             <td class="table-light d-none d-md-table-cell">${escola.responsavel}</td>
             <td class="table-light text-center">
                 <div class="btn-group" role="group">
