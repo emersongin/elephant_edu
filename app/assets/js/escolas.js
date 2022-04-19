@@ -1,8 +1,8 @@
 window.onload = () => {
     listarEscolas();
-    // listarLocalidades();
-    // submitFormCadastro();
-    // submitFormAtualizar();
+    listarLocalidades();
+    submitFormCadastro();
+    submitFormAtualizar();
 
 }
 
@@ -151,7 +151,7 @@ async function listarLocalidades() {
     if(localidades && localidades.length) {
 
         localidades.forEach((localidade, index) => {
-            opcoes += `<option value="${localidade.id}">${localidade.descricao}</option>`;
+            opcoes += `<option value="${localidade.id}">${localidade.ds_localidade}</option>`;
         });
 
         for (const select of selects) {

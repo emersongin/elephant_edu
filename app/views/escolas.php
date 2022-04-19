@@ -44,7 +44,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12 pt-5 offset-md-7 col-md-5">
-                                    <button type="button" class="btn btn-primary w-100">Cadastrar</button>
+                                    <button id="btn-cadastro" type="submit" class="btn btn-primary w-100">Cadastrar</button>
                                 </div>
                             </div>
                         </form>

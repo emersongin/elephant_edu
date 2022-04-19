@@ -115,5 +115,11 @@
     </main>
 
 <?php 
-    include_once './templates/footer.php';  
+    include_once './templates/footer.php'; 
+?>
+
+<script src="../assets/js/visitas.js"></script>
+
+<?php 
+    include_once './templates/end-footer.php'; 
 ?>
