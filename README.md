@@ -25,3 +25,5 @@
 - `Siga as instruções em [elephant_edu/app/config/database/]`
 
 ## Colaboradores
+
+- Emerson Andrey
